@@ -352,7 +352,7 @@ footer{
 }
 .right-main{
     float: right;
-    right: 5px;
+    right: 0.01%;
     width: 82%;
     height: 100%;
     position: fixed;
@@ -400,7 +400,15 @@ ul.breadcrumb li a:hover {
 /* page footer */
 .footer{
     position: fixed;
+    width: 79.9%;
+    /* width: 80%; */
     bottom: 0%;
-    width: 100%;
+    float: right;
+    right: 0.01%;
     vertical-align: middle;
+    padding: 1%;
+    background-color: #ffffff;
+    box-shadow: 0 -5px 5px -5px rgba(0,0,0,0.30);
 }
+
+/* main content */
