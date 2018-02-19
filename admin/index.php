@@ -38,10 +38,13 @@ require_once("../includes/session.php");
                                 Login Successfully
                             </div>';
                 while($row = $result->fetch_array()){
-                    echo $_SESSION['User'] = $row[0];
-                    echo $row[0];
+                    $_SESSION['User'] = $row[0];
+                    //$row[0];
                 }
-                //header('location:home.php');
+                $login_time=date('d M, Y  g:i:s ');
+                $update = "UPDATE admin SET last_login = '$login_time'";
+                $result = $conn->query($update) or Die("Updating Error");
+                header('location:home.php');
             }else{
                 $popup = '  <div id="alertMsg" class="alert alert-danger">
                                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span> 

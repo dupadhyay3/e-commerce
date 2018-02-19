@@ -1,10 +1,18 @@
 <?php
 session_start();
-if($_SESSION['User']=="" && $_SESSION['User']==null){
-    //echo "Session is Blank";
-    header('location:index.php');
+// echo $_SESSION['User'];
+if(($_SESSION['User'] == '') || (!isset($_SESSION['User']))){
+    $link="/admin/index.php";
+    if($_SERVER['PHP_SELF']!=$link){
+        // echo $_SERVER['PHP_SELF'];
+        header('location:../admin/index.php');
+    }
+}else{
+    $link2="/admin/home.php";
+    if($_SERVER['PHP_SELF']!=$link2){
+        // echo $_SERVER['PHP_SELF'];
+        header('location:../admin/home.php');
+    }
 }
-// else{
-//     echo $_SESSION['User'];
-// }
+//$_SESSION['User'];
 ?>
