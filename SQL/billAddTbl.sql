@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS billAdd
+(
+    billId INT(5) AUTO_INCREMENT PRIMARY KEY,
+    addId INT(5),
+    FOREIGN KEY (addId) REFERENCES address(addId)
+)

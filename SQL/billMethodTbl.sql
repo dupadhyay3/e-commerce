@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS billMethod
+(
+    billMethodId INT(5) AUTO_INCREMENT PRIMARY KEY,
+    billMethodName VARCHAR(20)
+)

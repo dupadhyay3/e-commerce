@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS shipMethod
+(
+    shipMethodId INT(5) AUTO_INCREMENT PRIMARY KEY,
+    shipMethodName VARCHAR(20)
+)

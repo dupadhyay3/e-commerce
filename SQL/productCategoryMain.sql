@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS pCategoryMain
+(
+    pcmId INT(5) AUTO_INCREMENT PRIMARY KEY,
+    pcmName VARCHAR(20)
+)
