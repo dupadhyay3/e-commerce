@@ -9,7 +9,7 @@
         <a id="customer1" href="../admin/cutomerDtails.php">Customer Details</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="customer2" href="#">Customer Address</a>
+        <a id="customer2" href="../admin/cutomerAddress.php">Customer Address</a>
     </div>
     <div class="left-menu-items">
         <a id="product" href="#">Product</a>
