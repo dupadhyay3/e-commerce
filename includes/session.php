@@ -1,18 +1,15 @@
 <?php
 session_start();
 // echo $_SESSION['User'];
-if(($_SESSION['User'] == '') || (!isset($_SESSION['User']))){
+if( ($_SESSION['User'] == '') || (!isset($_SESSION['User'])) ){
     $link="/admin/index.php";
     if($_SERVER['PHP_SELF']!=$link){
-        // echo $_SERVER['PHP_SELF'];
         header('location:../admin/index.php');
+        exit();
     }
 }else{
-    $link2="/admin/home.php";
-    if($_SERVER['PHP_SELF']!=$link2){
-        // echo $_SERVER['PHP_SELF'];
-        header('location:../admin/home.php');
-    }
+    // $_SESSION['last_page'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // header('location:http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]');
+    header( 'Content-Type: text/html; charset=utf-8' );
 }
-//$_SESSION['User'];
 ?>

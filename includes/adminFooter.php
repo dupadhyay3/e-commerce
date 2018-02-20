@@ -1,0 +1,1 @@
+<div class="footer">&copy; <?php echo date("Y"); ?> E-Commerce Portal. All rights reserved | Design by <a target="_blank" href="https://github.com/dupadhyay3">spyD3R</a></div>

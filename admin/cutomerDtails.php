@@ -8,7 +8,7 @@ require_once("../includes/session.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Home | E-Commerce</title>
+    <title>Cutomer Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
 </head>
 <body>
@@ -18,8 +18,9 @@ require_once("../includes/session.php");
     ?>
     <div class="right-main">
         <ul class="breadcrumb">
-            <li><a href="#">Admin Panel</a></li>
-            <li>Dashboard</li>
+            <li><a href="../admin/home.php">Admin Panel</a></li>
+            <li><a href="#">Cutomer</a></li>
+            <li>Customer Details</li>
         </ul>
         <div class="main-content">
             

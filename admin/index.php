@@ -30,7 +30,7 @@ require_once("../includes/session.php");
         $err[1]=val($ele[1],$err[1],$regex[1]);
 
         if(!empty($ele[0]) && !empty($ele[1])){
-            $sql="SELECT aid FROM admin WHERE email = '$ele[0]' AND password='$ele[1]'";
+            $sql="SELECT email FROM admin WHERE email = '$ele[0]' AND password='$ele[1]'";
             $result=$conn->query($sql);
             if($result->num_rows > 0){
                 $popup = '  <div id="alertMsg" class="alert alert-success">
@@ -44,7 +44,7 @@ require_once("../includes/session.php");
                 $login_time=date('d M, Y  g:i:s ');
                 $update = "UPDATE admin SET last_login = '$login_time'";
                 $result = $conn->query($update) or Die("Updating Error");
-                header('location:home.php');
+                header("Refresh: 0.8; url=../admin/home.php");
             }else{
                 $popup = '  <div id="alertMsg" class="alert alert-danger">
                                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span> 
@@ -64,6 +64,9 @@ require_once("../includes/session.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title>Admin Login | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
     <script src="../js/jquery-3.3.1.js"></script>
