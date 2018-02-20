@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS address
     State VARCHAR(20),
     Zip INT(6),
     Country VARCHAR(20),
-    FOREIGN KEY (custId) REFERENCES cutomerDetails(custId)
+    FOREIGN KEY (custId) REFERENCES customerDetails(custId)
 )

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS pCategorySub
 (
     pcsId INT(5) AUTO_INCREMENT PRIMARY KEY,
-    pcmID INT(5),
+    pcmId INT(5),
     pcsName VARCHAR(20),
-    FOREIGN KEY (pcmID) REFERENCES pCategoryMain(pcmID)
+    FOREIGN KEY (pcmId) REFERENCES pCategoryMain(pcmId)
 )

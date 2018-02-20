@@ -1,7 +1,7 @@
-CREATE TABLE IF NOT EXISTS cutomerLogin
+CREATE TABLE IF NOT EXISTS customerLogin
 (
     custId INT(5),
     Email VARCHAR(50),
     Pwd VARCHAR(20),
-    FOREIGN KEY (custId) REFERENCES cutomerDetails(custId)
+    FOREIGN KEY (custId) REFERENCES customerDetails(custId)
 )
