@@ -67,7 +67,7 @@ CREATE TABLE `admin` (
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-INSERT INTO `admin` VALUES (1,'admin@ecommerce.com','Admin@123','20 Feb, 2018  12:42:17 ');
+INSERT INTO `admin` VALUES (1,'admin@ecommerce.com','Admin@123','21 Feb, 2018  11:55:03 ');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,10 +80,15 @@ DROP TABLE IF EXISTS `billAdd`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `billAdd` (
   `billId` int(5) NOT NULL AUTO_INCREMENT,
-  `addId` int(5) DEFAULT NULL,
+  `custId` int(5) DEFAULT NULL,
+  `Address` varchar(50) DEFAULT NULL,
+  `City` varchar(20) DEFAULT NULL,
+  `State` varchar(20) DEFAULT NULL,
+  `Zip` int(6) DEFAULT NULL,
+  `Country` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`billId`),
-  KEY `addId` (`addId`),
-  CONSTRAINT `billAdd_ibfk_1` FOREIGN KEY (`addId`) REFERENCES `address` (`addId`)
+  KEY `custId` (`custId`),
+  CONSTRAINT `billAdd_ibfk_1` FOREIGN KEY (`custId`) REFERENCES `customerDetails` (`custId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -337,10 +342,15 @@ DROP TABLE IF EXISTS `shipAdd`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shipAdd` (
   `shipId` int(5) NOT NULL AUTO_INCREMENT,
-  `addId` int(5) DEFAULT NULL,
+  `custId` int(5) DEFAULT NULL,
+  `Address` varchar(50) DEFAULT NULL,
+  `City` varchar(20) DEFAULT NULL,
+  `State` varchar(20) DEFAULT NULL,
+  `Zip` int(6) DEFAULT NULL,
+  `Country` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`shipId`),
-  KEY `addId` (`addId`),
-  CONSTRAINT `shipAdd_ibfk_1` FOREIGN KEY (`addId`) REFERENCES `address` (`addId`)
+  KEY `custId` (`custId`),
+  CONSTRAINT `shipAdd_ibfk_1` FOREIGN KEY (`custId`) REFERENCES `customerDetails` (`custId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -385,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-20 15:31:49
+-- Dump completed on 2018-02-21 12:39:56

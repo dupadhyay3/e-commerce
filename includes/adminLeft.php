@@ -6,19 +6,22 @@
         <a id="customer" href="#">Customer</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="customer1" href="../admin/cutomerDtails.php">Customer Details</a>
+        <a id="customer1" href="../admin/customerDetails.php">Customer Details</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="customer2" href="../admin/cutomerAddress.php">Customer Address</a>
+        <a id="customer2" href="../admin/customerAddress.php">Customer Address</a>
     </div>
     <div class="left-menu-items">
         <a id="product" href="#">Product</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="product1" href="#">Product Details</a>
+        <a id="product1" href="../admin/productDetails.php">Product Details</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="product" href="#">Product Category</a>
+        <a id="product2" href="#">Product Category</a>
+    </div>
+    <div class="left-menu-items-sub">
+        <a id="product3" href="#">Add Product Details</a>
     </div>
     <div class="left-menu-items">
         <a id="order" href="#">Order</a>

@@ -36,7 +36,13 @@ require_once("../includes/session.php");
                             <th>Delete</th>   
                         </tr>
                         <?php
-                            $sql = "SELECT (custId, FirstName, LastName,Email,Pwd,Gender,MobNo) FROM customerDetails";
+                            $limit = 8; 
+                            if (isset($_GET["page"])) { 
+                                $page  = $_GET["page"]; 
+                            } else { $page=1; };  
+                            $start_from = ($page-1) * $limit;
+
+                            $sql = "SELECT custId, FirstName, LastName,Email,Pwd,Gender,MobNo FROM customerDetails LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -61,6 +67,30 @@ require_once("../includes/session.php");
                             }
                         ?>
                 </table>
+                <div align="center">
+                    <?php
+                            $sql="SELECT COUNT(custId) FROM customerDetails";
+                            $result = $conn->query($sql);
+                            $row = $result->fetch_array();
+                            $total_records = $row[0];
+                            $total_pages = ceil($total_records/$limit); 
+                        ?> 
+                        <div class="pagination">
+                            <?php
+                                for($i=1;$i<=$total_pages;$i++){
+                                    echo "<a href='customerDetails.php?page=".$i."'>".$i."</a>";
+                                }
+                            ?>
+                            <!-- <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#" class="active">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a> -->
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
