@@ -25,9 +25,9 @@ require_once("../includes/session.php");
         <div class="main-content">
 
             <div class="tab">
-                <button class="tablinks active" onclick="openTab(event, 'All')">All Address</button>
-                <button class="tablinks" onclick="openTab(event, 'Shipping')">Shipping Address</button>
-                <button class="tablinks" onclick="openTab(event, 'Billing')">Billing Address</button>
+                <button id="Al" class="tablinks active" onclick="openTab(event, 'All')">All Address</button>
+                <button id="Ship" class="tablinks" onclick="openTab(event, 'Shipping')">Shipping Address</button>
+                <button id="Bill" class="tablinks" onclick="openTab(event, 'Billing')">Billing Address</button>
             </div>
 
             <div id="All" class="tabcontent" style="display:block;">

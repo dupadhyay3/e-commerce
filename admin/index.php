@@ -24,7 +24,7 @@ require_once("../includes/session.php");
     if(isset($_POST['btnLogin'])){
         $ele = array(secure($_POST['txtEml']), secure($_POST['txtPwd']));
         $err = array("* Invalid Email. Ex. abc.xyz.com","* Invalid Password. Ex. Abc@123, And Min 6 Character ");
-        $regex = array("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/" , "/^\S*(?=\S{6,})(?=\S*[\W])(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/");
+        $regex = array("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,5})$/" , "/^\S*(?=\S{6,})(?=\S*[\W])(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$/");
 
         $err[0]=val($ele[0],$err[0],$regex[0]);
         $err[1]=val($ele[1],$err[1],$regex[1]);

@@ -18,10 +18,13 @@
         <a id="product1" href="../admin/productDetails.php">Product Details</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="product2" href="#">Product Category</a>
+        <a id="product3" href="../admin/productDetailsAss.php">Add Product Details</a>
     </div>
     <div class="left-menu-items-sub">
-        <a id="product3" href="#">Add Product Details</a>
+        <a id="product2" href="../admin/productCategory.php">Product Category</a>
+    </div>
+    <div class="left-menu-items-sub">
+        <a id="product2" href="../admin/productCategoryAdd.php">Add Product Category</a>
     </div>
     <div class="left-menu-items">
         <a id="order" href="#">Order</a>
