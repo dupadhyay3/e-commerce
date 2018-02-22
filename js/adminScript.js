@@ -1,4 +1,3 @@
-
 //function will check emial is valid or not
 function isEmail(email) {
     var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -40,12 +39,12 @@ function isNull(val) {
 
 
 $(document).ready(function() {
-    var msg=["* Require Field", "* Only Digits Allowed", "* Only Characters & Space Allowed", "* Invalid Email. Ex.: abc@xyz.com", "* Invalid Password. Ex.: Abc@123, Character >= 6", "* Both Password is Not Matched"];
-    
-    
+    var msg = ["* Require Field", "* Only Digits Allowed", "* Only Characters & Space Allowed", "* Invalid Email. Ex.: abc@xyz.com", "* Invalid Password. Ex.: Abc@123, Character >= 6", "* Both Password is Not Matched"];
+
+
     //login btn click
-    $('#logForm').submit(function(){
-    
+    $('#logForm').submit(function() {
+
         //email validation
         if (!isBlank($('#txtLoginEml').val())) {
             if (!isEmail($('#txtLoginEml').val())) {
@@ -58,9 +57,8 @@ $(document).ready(function() {
                 $('#errEml').fadeOut(1000);
                 $('#txtLoginEml').removeClass('box-input-field-error');
             }
-        }
-        else {
-            event.preventDefault();//use to prevent submiting form
+        } else {
+            event.preventDefault(); //use to prevent submiting form
             $('#errEml').fadeIn(1000);
             $('#errEml').text(msg[0]);
             // $('#txtLoginEml').focus();
@@ -69,48 +67,64 @@ $(document).ready(function() {
 
 
         //password validation
-        if(!isBlank($('#txtLoginPwd').val())){
-            if(!isPassword($('#txtLoginPwd').val()) && $('#txtLoginPwd').val.length < 6){
+        if (!isBlank($('#txtLoginPwd').val())) {
+            if (!isPassword($('#txtLoginPwd').val()) && $('#txtLoginPwd').val.length < 6) {
                 $('#errPwd').fadeIn(1000);
                 $('#errPwd').text(msg[4]);
                 $('#txtLoginPwd').focus();
                 $('#txtLoginPwd').addClass('box-input-field-error');
-                event.preventDefault();//use to prevent submiting form
-            }else{
+                event.preventDefault(); //use to prevent submiting form
+            } else {
                 $('#errPwd').fadeOut(1000);
                 $('#txtLoginPwd').removeClass('box-input-field-error');
             }
-        }else{
+        } else {
             $('#errPwd').fadeIn(1000);
             $('#errPwd').text(msg[0]);
             //$('#txtLoginPwd').focus();
             $('#txtLoginPwd').addClass('box-input-field-error');
-            event.preventDefault();//use to prevent submiting form
+            event.preventDefault(); //use to prevent submiting form
         }
-        
+
     });
 
-    $('#mainCatForm').submit(function(){
-        if(!isBlank('#txtProCatMain')){
+    $('#mainCatForm').submit(function() {
+        if (!isBlank('#txtProCatMain')) {
 
             //for Ajax Add Data into Database
-            var main= $('#txtProCatMain').val();
-            $.post("../includes/addMainProCat.php",{
-                main1:main,
-            }, function(data){
-                //alert(data);
-                $('#alertMain').after(data);
+            var main = $('#txtProCatMain').val();
+            $.post("../includes/addMainProCat.php", {
+                main1: main,
+            }, function(data) {
+                alert(data); //Get Data From the addMainPRoCat.php which data is echo in that page
+                //$('#alertMain').after(data);
                 $('#mainCatForm')[0].reset();
             });
 
             $('#errMain').fadeOut(1000);
             $('txtProCatMain').removeClass('box-input-field-error');
-        }else{
+        } else {
             $('#errMain').fadeIn(1000);
             $('#errMain').text(msg[0]);
             //$('#txtLoginPwd').focus();
             $('#txtProCatMain').addClass('box-input-field-error');
-            event.preventDefault();//use to prevent submiting form
+            event.preventDefault(); //use to prevent submiting form
+        }
+    });
+
+    $('#subCatForm').submit(function() {
+
+        if (!isBlank('#txtProCatSub')) {
+
+            //for Ajax Add Data into Database
+            var main = $('#opProCatMain');
+            var sub = $('#txtProCatSub');
+
+        } else {
+            $('#errSub').fadeIn(1000);
+            $('#errSub').text(msg[0]);
+            $('#txtProCatSub').addClass('box-inout-field-error');
+            event.preventDefault(); //use to prevent submiting form
         }
     });
 });

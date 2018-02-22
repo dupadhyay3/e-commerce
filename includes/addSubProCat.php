@@ -1,8 +1,8 @@
 <?php
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
-    $mainCategory = $_POST['main1']; //fatching value from URL
-    $sql = "INSERT INTO pCategoryMain (pcmName) VALUES ('$mainCategory')";
+    $mainCategory = $_POST['sub1']; //fatching value from URL
+    $sql = "INSERT INTO pCategoryMain (pcmId, pcmName) VALUES ('$mainCategory')";
     if ($conn->query($sql) === TRUE) {
         echo "Record Added Successfully";
         // echo $popup='<div id="alertMsg" class="alert alert-success">\

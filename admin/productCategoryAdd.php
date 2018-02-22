@@ -65,10 +65,28 @@
                         <div class="box-header">
                             <h1>Add Sub Product Category</h1>
                         </div>
-                        <form id="mainCatForm" name="MainCatForm" action="../admin/productCategoryAdd.php" method="post">
+                        <form id="subCatForm" name="SubCatForm" action="../admin/productCategoryAdd.php" method="post">
                             <div class="box-input-group">
-                                <input class="box-input-field" type="text" id="txtProCatMain" name="txtMain" value="<?php echo $ele[0]; ?>">
-                                <span id="errMain" class="err"><?php echo $err[0]; ?></span>
+                                <select id="opMainProCat" 
+                                onchange="document.getElementById('txtProCatMain1').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;">>
+                                    <?php
+                                        $sql = "SELECT * FROM pCategoryMain";
+                                        $result = $conn->query($sql);
+                                        if($result->num_rows > 0){
+                                            while($row = $result->fetch_array()){
+                                                echo "<option value='$row[0]'>$row[1]</option>";
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                                <input name="idValue" id="idValue" type="hidden">
+                                <input class="box-input-field" type="text" id="txtProCatMain1" name="txtMain1" value="<?php echo $ele[0]; ?>" onfocus="this.select()">
+                                <span id="errMainSub" class="err"><?php echo $err[0]; ?></span>
+                                <label>Main Category</label>
+                            </div>
+                            <div class="box-input-group">
+                                <input class="box-input-field" type="text" id="txtProCatSub" name="txtSub" value="<?php echo $ele[0]; ?>">
+                                <span id="errSub" class="err"><?php echo $err[0]; ?></span>
                                 <label>Sub Category</label>
                             </div>
                             <button type="submit" name="btnAddSub" id="btnAddSub">Add</button>
