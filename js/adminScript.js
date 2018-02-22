@@ -42,19 +42,10 @@ function isNull(val) {
 $(document).ready(function() {
     var msg=["* Require Field", "* Only Digits Allowed", "* Only Characters & Space Allowed", "* Invalid Email. Ex.: abc@xyz.com", "* Invalid Password. Ex.: Abc@123, Character >= 6", "* Both Password is Not Matched"];
     
-    //$('#alertMsg').fadeOut();//hide popup alert
     
     //login btn click
-    // $('#btnLogin').click(function(){
     $('#logForm').submit(function(){
     
-        // if(isBlank('#errEml') && isBlank('#errPwd')){
-        //     $('#logForm').submit(function(){
-        //         event.preventDefault();
-        //         alert("submited");
-        //     });
-        // }
-
         //email validation
         if (!isBlank($('#txtLoginEml').val())) {
             if (!isEmail($('#txtLoginEml').val())) {
@@ -99,7 +90,27 @@ $(document).ready(function() {
         
     });
 
+    $('#mainCatForm').submit(function(){
+        if(!isBlank('#txtProCatMain')){
 
+            //for Ajax Add Data into Database
+            var main= $('#txtProCatMain').val();
+            $.post("../includes/addMainProCat.php",{
+                main1:main,
+            }, function(data){
+                //alert(data);
+                $('#alertMain').after(data);
+                $('#mainCatForm')[0].reset();
+            });
 
-
+            $('#errMain').fadeOut(1000);
+            $('txtProCatMain').removeClass('box-input-field-error');
+        }else{
+            $('#errMain').fadeIn(1000);
+            $('#errMain').text(msg[0]);
+            //$('#txtLoginPwd').focus();
+            $('#txtProCatMain').addClass('box-input-field-error');
+            event.preventDefault();//use to prevent submiting form
+        }
+    });
 });

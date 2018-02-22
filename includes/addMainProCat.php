@@ -1,0 +1,18 @@
+<?php
+    require_once("../includes/session.php");
+    require_once("../includes/connection.php");
+    $mainCategory = $_POST['main1']; //fatching value from URL
+    $sql = "INSERT INTO pCategoryMain (pcmName) VALUES ('$mainCategory')";
+    if ($conn->query($sql) === TRUE) {
+        echo $popup='<div id="alertMsg" class="alert alert-success">
+                    <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span> 
+                    Record Added Successfull
+                </div>';
+    }else{
+        echo $popup='<div id="alertMsg" class="alert alert-danger">
+                    <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span> 
+                    Erro: $conn->error;
+                </div>';
+    }
+    $conn->close();
+?>
