@@ -224,7 +224,7 @@ $(document).ready(function() {
         //for Ajax Add Data into Database
         if (!isBlank($('#txtProName').val()) && !isBlank($('#txtProSKU').val()) && !isBlank($('#txtProPrice').val()) && !isBlank($('#txtProCatMain2').val()) && !isBlank($('#txtProCatSub2').val()) && !isBlank($('#txtStock').val()) && !isBlank($('#FileImg').val())) {
 
-            var formData = new FormData(this);
+            var formData = new FormData($('#proDetailForm')[0]);
             // var name = $('#txtProName').val();
             // var sku = $('#txtProSKU').val();
             // var price = $('#txtProPrice').val();
