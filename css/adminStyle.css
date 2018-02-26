@@ -21,7 +21,8 @@ ul.breadcrumb,
 table,
 .pagination,
 .box-category-main,
-.box-category-sub {
+.box-category-sub,
+.box-product {
     margin: auto;
 }
 
@@ -33,7 +34,8 @@ table,
 .pagination,
 .left-menu-items-sub,
 .box-category-main,
-.box-category-sub {
+.box-category-sub,
+.box-product {
     position: relative;
 }
 
@@ -60,16 +62,17 @@ html {
 .box {
     height: 400px;
     top: 90px;
+    width: 400px;
 }
 
 .box,
 .box-category-main,
-.box-category-sub {
+.box-category-sub,
+.box-product {
     /* height: 400px; */
     left: 0;
     z-index: 200;
     right: 0;
-    width: 400px;
     color: #666;
     border-radius: 3px;
     background: #FFF;
@@ -167,7 +170,8 @@ label {
 
 .box button,
 .box-category-main button,
-.box-category-sub button {
+.box-category-sub button,
+.box-product button {
     background: #cfd8dc;
     border: 0;
     color: #009688;
@@ -188,14 +192,16 @@ label {
 
 .box button:active,
 .box-category-main button:active,
-.box-category-sub button:active {
+.box-category-sub button:active,
+.box-product button:active {
     background: #009688;
     color: #263238;
 }
 
 .box button:hover,
 .box-category-main button:hover,
-.box-category-sub button:hover {
+.box-category-sub button:hover,
+.box-product button:hover {
     background: #009688;
     color: #FFF;
     -webkit-transition: all 0.4s;
@@ -768,11 +774,13 @@ img.pImgTbl {
 .box-category-main {
     height: 250px;
     top: 30px;
+    width: 400px;
 }
 
 .box-category-sub {
     height: 330px;
     top: 30px;
+    width: 400px;
 }
 
 
@@ -796,12 +804,54 @@ img.pImgTbl {
     position: relative;
 }
 
-#opMainProCat {
-    top: 10.1px;
-    border: none;
-    padding: none;
-    background: none;
-    outline: none;
+
+/* box-product */
+
+.box-product {
+    top: 5px;
+    height: 450px;
+}
+
+
+/* box-product header */
+
+.box-product .box-header h1 {
+    margin-top: 2%;
+    margin-left: 4.3%;
+    margin-bottom: 4%;
+    font-size: 25px;
+    font-weight: 300;
+    color: #607d8b;
+}
+
+
+/* Box For Add Product Details  */
+
+.box-left,
+.box-mid,
+.box-right {
+    width: 400px;
+    float: left;
+}
+
+#drop_file_zone {
+    background-color: #EEE;
+    border: #999 5px dashed;
+    width: 290px;
+    height: 200px;
+    padding: 8px;
     font-size: 18px;
-    position: absolute;
+}
+
+#drag_upload_file {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#drag_upload_file p {
+    text-align: center;
+}
+
+#drag_upload_file #selectfile {
+    display: none;
 }
