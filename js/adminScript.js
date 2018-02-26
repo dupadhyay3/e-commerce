@@ -36,15 +36,12 @@ function isNull(val) {
     if (val == "null") return true;
 }
 
-
-
+// Page Loading Event 
 $(document).ready(function() {
     var msg = ["* Require Field", "* Only Digits Allowed", "* Only Characters & Space Allowed", "* Invalid Email. Ex.: abc@xyz.com", "* Invalid Password. Ex.: Abc@123, Character >= 6", "* Both Password is Not Matched"];
 
-
     //login btn click
     $('#logForm').submit(function() {
-
         //email validation
         if (!isBlank($('#txtLoginEml').val())) {
             if (!isEmail($('#txtLoginEml').val())) {
@@ -64,7 +61,6 @@ $(document).ready(function() {
             // $('#txtLoginEml').focus();
             $('#txtLoginEml').addClass('box-input-field-error');
         }
-
 
         //password validation
         if (!isBlank($('#txtLoginPwd').val())) {
@@ -88,8 +84,9 @@ $(document).ready(function() {
 
     });
 
+    // Add Main Product Category
     $('#mainCatForm').submit(function() {
-        if (!isBlank('#txtProCatMain')) {
+        if (!isBlank($('#txtProCatMain').val())) {
 
             //for Ajax Add Data into Database
             var main = $('#txtProCatMain').val();
@@ -112,18 +109,35 @@ $(document).ready(function() {
         }
     });
 
+    // Add Sub Product Category
     $('#subCatForm').submit(function() {
-
-        if (!isBlank('#txtProCatSub')) {
+        if (!isBlank($('#txtProCatSub').val()) && !isBlank($('#txtProCatMain1').val())) {
+            // console.log(main.val());
+            // console.log(sub.val());
 
             //for Ajax Add Data into Database
-            var main = $('#opProCatMain');
-            var sub = $('#txtProCatSub');
+            var main = $('#txtProCatMain1').val();
+            var sub = $('#txtProCatSub').val();
+            $.post("../includes/addSubProCat.php", {
+                main1: main,
+                sub1: sub,
+            }, function(data) {
+                alert(data);
+                $('#subCatForm')[0].reset();
+            });
+
+            $('#errMainSub').fadeOut(1000);
+            $('txtProCatMain1').removeClass('box-input-field-error');
+            $('#errSub').fadeOut(1000);
+            $('txtProCatSub').removeClass('box-input-field-error');
 
         } else {
             $('#errSub').fadeIn(1000);
             $('#errSub').text(msg[0]);
-            $('#txtProCatSub').addClass('box-inout-field-error');
+            $('#errMainSub').fadeIn(1000);
+            $('#errMainSub').text(msg[0]);
+            $('#txtProCatSub').addClass('box-input-field-error');
+            $('#txtProCatMain1').addClass('box-input-field-error');
             event.preventDefault(); //use to prevent submiting form
         }
     });

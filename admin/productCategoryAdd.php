@@ -55,7 +55,7 @@
                             <button type="submit" name="btnAddMain" id="btnAddMain">Add</button>
                         </form>
                     </div>
-                    <div id="alertMain"></div>
+                    <!-- <div id="alertMain"></div> -->
                 </div>
             </div>
 
@@ -67,8 +67,7 @@
                         </div>
                         <form id="subCatForm" name="SubCatForm" action="../admin/productCategoryAdd.php" method="post">
                             <div class="box-input-group">
-                                <select id="opMainProCat" 
-                                onchange="document.getElementById('txtProCatMain1').value=this.options[this.selectedIndex].text; document.getElementById('idValue').value=this.options[this.selectedIndex].value;">>
+                                <datalist id="opMainProCat" >
                                     <?php
                                         $sql = "SELECT * FROM pCategoryMain";
                                         $result = $conn->query($sql);
@@ -78,9 +77,8 @@
                                             }
                                         }
                                     ?>
-                                </select>
-                                <input name="idValue" id="idValue" type="hidden">
-                                <input class="box-input-field" type="text" id="txtProCatMain1" name="txtMain1" value="<?php echo $ele[0]; ?>" onfocus="this.select()">
+                                </datalist>
+                                <input class="box-input-field" list="opMainProCat" type="text" id="txtProCatMain1" name="txtMain1" value="<?php echo $ele[0]; ?>">
                                 <span id="errMainSub" class="err"><?php echo $err[0]; ?></span>
                                 <label>Main Category</label>
                             </div>
@@ -92,7 +90,7 @@
                             <button type="submit" name="btnAddSub" id="btnAddSub">Add</button>
                         </form>
                     </div>
-                    <div id="alertSub"></div>
+                    <!-- <div id="alertSub"></div> -->
                 </div>
             </div>
 

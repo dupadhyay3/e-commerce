@@ -34,12 +34,12 @@ require_once("../includes/session.php");
                     <table>
                         <tr>
                             <th>pcmId</th>
-                            <th>pcmName</th>
+                            <th>Main Category</th>
                             <th>Delete</th>
                             <th>Edit</th>
                         </tr>
                         <?php
-                            $limit = 8; 
+                            $limit = 6; 
                             if (isset($_GET["page"])) { 
                                 $page  = $_GET["page"]; 
                             } else { $page=1; };  
@@ -80,14 +80,6 @@ require_once("../includes/session.php");
                                     echo "<a href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
-                            <!-- <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#" class="active">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a> -->
                         </div>
                     </div>
                 </div>
@@ -96,21 +88,20 @@ require_once("../includes/session.php");
             <div id="Sub" class="tabcontent">
                 <div class="tab-txt">
                     <table>
-                        <tr>
-                            <th>pcsId</th>                            
-                            <th>pcsName</th>
-                            <th>pcmName</th>
+                        <tr>                            
+                            <th>Main Category</th>
+                            <th>Sub Category</th>
                             <th>Delete</th>
                             <th>Edit</th>
                         </tr>
                         <?php
-                            $limit = 8; 
+                            $limit = 6; 
                             if (isset($_GET["page"])) { 
                                 $page  = $_GET["page"]; 
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT s.pcsId, s.pcsName, m.pcmName FROM pCategorySub s JOIN pCategoryMain m ON m.pcmId = s.pcmId LIMIT $start_from, $limit";
+                            $sql = "SELECT m.pcmName, s.pcsName  FROM pCategorySub s JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY m.pcmName ASC, pcsName ASC LIMIT $start_from, $limit ";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -118,7 +109,6 @@ require_once("../includes/session.php");
                                     <tr>
                                         <td>$row[0]</td>
                                         <td>$row[1]</td>
-                                        <td>$row[2]</td>
                                         <td><a href='../includes/adminDelProductCategorySub.php?delete_id=$row[0]' onclick='return confirm('Are You sure to delete !'); ' ><img class='icon' src='../img/delete.png'></a></td>
                                         <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
                                     </tr>
@@ -146,14 +136,6 @@ require_once("../includes/session.php");
                                     echo "<a href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
-                            <!-- <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#" class="active">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a> -->
                         </div>
                     </div>
                 </div>
