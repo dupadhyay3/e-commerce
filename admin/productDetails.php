@@ -10,6 +10,7 @@ require_once("../includes/session.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
     <?php 
@@ -51,14 +52,15 @@ require_once("../includes/session.php");
                                     echo "
                                     <tr>
                                         <td>$row[0]</td>
-                                        <td><img class='pImgTbl' src='$row[1]' alt='Product Image'></td>
+                                        <td><img class='pImgTbl' src='data:image/jpeg;base64,".base64_encode( $row[1] )."'  onerror='.'this.src='../img/NoImg.png';'/></td>
                                         <td>$row[2]</td>
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>
                                         <td>$row[7]</td>
-                                        <td><a href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm('Are You sure to delete !'); ' >Delete</a></td>
+                                        <td><a href='../includes/adminDelProduct.php?delete_id=$row[0]' onclick='return confirm(Are You sure to delete !);'><img class='icon' src='../img/delete.png'></a></td>
+                                        <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
                                     </tr>
                                     ";
                                 }
@@ -84,14 +86,6 @@ require_once("../includes/session.php");
                                     echo "<a href='customerDetails.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
-                            <!-- <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a href="#" class="active">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a> -->
                         </div>
                     </div>
             </div>

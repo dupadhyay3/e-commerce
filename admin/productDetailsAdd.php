@@ -10,6 +10,7 @@ require_once("../includes/session.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Add Product Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
     <?php 
@@ -28,7 +29,7 @@ require_once("../includes/session.php");
                     <div class="box-header">
                         <h1>Add Product Deatils</h1>
                     </div>
-                    <form id="proDetailForm" name="ProDetailForm" action="../admin/productDetailsAdd.php" method="post">
+                    <form id="proDetailForm" name="ProDetailForm" action="../admin/productDetailsAdd.php" method="post" enctype="multipart/form-data">
                         <div class="box-left">
                             <div class="box-input-group">
                                 <input class="box-input-field" type="text" id="txtProName" name="txtPName" value="<?php echo $ele[0]; ?>">
@@ -65,15 +66,15 @@ require_once("../includes/session.php");
                             </div>
                             <div class="box-input-group">
                                 <datalist id="opSubProCat" >
-                                    <?php
-                                        $sql = "SELECT * FROM pCategorySub";
-                                        $result = $conn->query($sql);
-                                        if($result->num_rows > 0){
-                                            while($row = $result->fetch_array()){
-                                                echo "<option value='$row[0]'>$row[2]</option>";
-                                            }
-                                        }
-                                    ?>
+                                    <!-- <?php
+                                        // $sql = "SELECT * FROM pCategorySub";
+                                        // $result = $conn->query($sql);
+                                        // if($result->num_rows > 0){
+                                        //     while($row = $result->fetch_array()){
+                                        //         echo "<option value='$row[0]'>$row[2]</option>";
+                                        //     }
+                                        // }
+                                    ?> -->
                                 </datalist>
                                 <input class="box-input-field" list="opSubProCat" type="text" id="txtProCatSub2" name="txtSub2" value="<?php echo $ele[4]; ?>">
                                 <span id="errProSub" class="err"><?php echo $err[4]; ?></span>
@@ -92,11 +93,13 @@ require_once("../includes/session.php");
                         <div class="box-right">
                             <div class="box-input-group">
                                 <input class="box-input-field" type="file" name="fileImg" id="FileImg">
-                                <img src="" id="profile-img-tag" width="200px"/>
+                                <img class="product-img" src="" id="fileImgTag" onerror="this.src='../img/NoImg.png';"/>
+                                <span id="errProImg" class="err"><?php echo $err[6]; ?></span>
+                                <label>Product Image</label>
                             </div>
                         </div>
-                        
-                        <button type="submit" name="btnAddMain" id="btnAddMain">Add</button>
+                        <div class="clear"></div>
+                        <button type="submit" name="btnAddProduct" id="btnAddPro">Add</button>
                     </form>
                 </div>
                 <!-- <div id="alertMain"></div> -->
@@ -104,5 +107,20 @@ require_once("../includes/session.php");
         </div>
     </div>
     <?php require_once('../includes/adminFooter.php'); ?>
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#fileImgTag').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#FileImg").change(function(){
+            readURL(this);
+        });
+    </script>
+    <script src="../js/adminScript.js"></script>
 </body>
 </html>

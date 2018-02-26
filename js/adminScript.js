@@ -141,4 +141,135 @@ $(document).ready(function() {
             event.preventDefault(); //use to prevent submiting form
         }
     });
+
+    // Add Product Details
+    $('#proDetailForm').submit(function() {
+        if (isBlank($('#txtProName').val())) {
+            $('#errName').fadeIn(1000);
+            $('#errName').text(msg[0]);
+            $('#txtProName').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errName').fadeOut(1000);
+            $('#errName').text('');
+            $('#txtProName').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProSKU').val())) {
+            $('#errSKU').fadeIn(1000);
+            $('#errSKU').text(msg[0]);
+            $('#txtProSKU').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errSKU').fadeOut(1000);
+            $('#errSKU').text('');
+            $('#txtProSKU').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProPrice').val())) {
+            $('#errPrice').fadeIn(1000);
+            $('#errPrice').text(msg[0]);
+            $('#txtProPrice').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errPrice').fadeOut(1000);
+            $('#errPrice').text('');
+            $('#txtProPrice').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProCatMain2').val())) {
+            $('#errProMain').fadeIn(1000);
+            $('#errProMain').text(msg[0]);
+            $('#txtProCatMain2').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProMain').fadeOut(1000);
+            $('#errProMain').text('');
+            $('#txtProCatMain2').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProCatSub2').val())) {
+            $('#errProSub').fadeIn(1000);
+            $('#errProSub').text(msg[0]);
+            $('#txtProCatSub2').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProSub').fadeOut(1000);
+            $('#errProSub').text('');
+            $('#txtProCatSub2').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtStock').val())) {
+            $('#errProSub').fadeIn(1000);
+            $('#errProSub').text(msg[0]);
+            $('#txtProCatSub2').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProSub').fadeOut(1000);
+            $('#errProSub').text('');
+            $('#txtProCatSub2').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#FileImg').val())) {
+            $('#errProImg').fadeIn(1000);
+            $('#errProImg').text(msg[0]);
+            $('#FileImg').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProImg').fadeOut(1000);
+            $('#errProImg').text('');
+            $('#FileImg').removeClass('box-imput-field-error');
+        }
+
+        //for Ajax Add Data into Database
+        if (!isBlank($('#txtProName').val()) && !isBlank($('#txtProSKU').val()) && !isBlank($('#txtProPrice').val()) && !isBlank($('#txtProCatMain2').val()) && !isBlank($('#txtProCatSub2').val()) && !isBlank($('#txtStock').val()) && !isBlank($('#FileImg').val())) {
+
+            var formData = new FormData(this);
+            // var name = $('#txtProName').val();
+            // var sku = $('#txtProSKU').val();
+            // var price = $('#txtProPrice').val();
+            // var main = $('#txtProCatMain2').val();
+            // var sub = $('#txtProCatSub2').val();
+            // var img = $('#fileImgTag').attr('src');
+            // var stock = $('#txtStock').val();
+            $.post("../includes/addProduct.php",
+                // {
+                formData,
+                // name1: name,
+                // sku1: sku,
+                // price1: price,
+                // main1: main,
+                // sub1: sub,
+                // stock1: stock,
+                // img1: img,
+                // },
+                function(data) {
+                    alert(data);
+                    $('#subCatForm')[0].reset();
+                });
+        }
+    });
+
+
+    // Ajax For Main And Sub Category Relation in Add Product Details
+    $('#txtProCatMain2').on('change', function() {
+        var mainId = $('#txtProCatMain2').val();
+        if (mainId) {
+            $.ajax({
+                type: 'post',
+                url: "../includes/getSubCategory.php",
+                dataType: 'Json',
+                data: { 'id': mainId },
+                success: function(data) {
+                    $('#opSubProCat').empty();
+                    $.each(data, function(key, value) {
+                        $('#opSubProCat').append('<option value="' + key + '">' + value + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#opSubProCat').empty();
+        }
+    });
+
 });
