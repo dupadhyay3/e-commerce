@@ -265,7 +265,31 @@ $(document).ready(function() {
         }
     });
 
-    // delete product details
-    
+    // delete from productDetails.php Page
+    // $('a.del').click(function() {
+    //     event.preventDefault();
+    //     var parent = $(this).parent().parent();
+    //     if (confirm("Are You sure to delete !")) {
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: "../includes/adminDelProduct.php",
+    //             data: id,
+    //             beforeSend: function() {
+    //                 parent.animate({ 'backgroundColor': '#fb6c6c' }, 300);
+    //             },
+    //             success: function(data) {
+    //                 alert(data);
+    //                 parent.slideUp(300, function() {
+    //                     parent.remove();
+    //                 });
+    //             }
+    //         });
+    //     }
+    // });
+
 
 });
+
+function editProDetails(id) {
+    window.location.href = "../admin/productDetailsEdit.php?edit=" + id;
+}

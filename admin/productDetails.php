@@ -11,6 +11,7 @@ require_once("../includes/session.php");
     <title>Product Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
     <script src="../js/jquery-3.3.1.js"></script>
+    <script src="../js/adminScript.js"></script>
 </head>
 <body>
     <?php 
@@ -26,6 +27,7 @@ require_once("../includes/session.php");
         <div class="main-content">
             <div style="overflow-x:auto">
                 <table border=1 align="center">
+                    <thead>
                         <tr>
                             <th>pId</th>
                             <th>pImage</th>
@@ -38,6 +40,8 @@ require_once("../includes/session.php");
                             <th>Delete</th>
                             <th>Edit</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <?php
                             $limit = 4; 
                             if (isset($_GET["page"])) { 
@@ -45,22 +49,24 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;
 
-                            $sql = "SELECT p.pId, p.pImage, p.pName, p.pSKU, p.pPrice, m.pcmName, s.pcsName, p.pStock FROM productDetails p JOIN pCategorySub s ON s.pcsId=p.pcsId JOIN pCategoryMain m ON m.pcmId = s.pcmId LIMIT $start_from, $limit";
+                            $sql = "SELECT p.pId, p.pImage, p.pName, p.pSKU, p.pPrice, m.pcmName, s.pcsName, p.pStock FROM productDetails p JOIN pCategorySub s ON s.pcsId=p.pcsId JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY p.pName ASC, m.pcmName ASC, s.pcsName ASC, p.pStock ASC LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
                                     echo "
-                                    <tr>
+                                    <tr id='$row[0]'>
                                         <td>$row[0]</td>
-                                        <td><img class='pImgTbl' src='data:image/jpeg;base64,".base64_encode( $row[1] )."'  onerror='.'this.src='../img/NoImg.png';'/></td>
+                                        <td><img class='pImgTbl' src='data:image/*;base64,".base64_encode( $row[1] )."'  onerror='.'this.src='../img/NoImg.png';'/></td>
                                         <td>$row[2]</td>
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>
                                         <td>$row[7]</td>"; ?>
-                                        <td><a name="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td>
-                                        <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
+                                        <!-- <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td> -->
+                                        <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td>
+                                        <!-- <td><a href='../admin/productDetailsEdit.php?edit=<?php echo $row[0]; ?>'><img class='icon' src='../img/edit.png'></a></td> -->
+                                        <td><a href='#' onclick="editProDetails(<?php echo $row[0]; ?>)"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>";
                                 }
                             }else{
@@ -70,6 +76,7 @@ require_once("../includes/session.php");
                                 </tr>";
                             }
                         ?>
+                        </tbody>
                 </table>
                 <div align="center">
                     <?php
@@ -82,7 +89,7 @@ require_once("../includes/session.php");
                     <div class="pagination">
                         <?php
                                 for($i=1;$i<=$total_pages;$i++){
-                                    echo "<a href='customerDetails.php?page=".$i."'>".$i."</a>";
+                                    echo "<a href='productDetails.php?page=".$i."'>".$i."</a>";
                                 }
                         ?>
                         <!-- <a href="#">&laquo;</a>
@@ -99,6 +106,5 @@ require_once("../includes/session.php");
         </div>
     </div>
     <?php require_once('../includes/adminFooter.php'); ?>
-    <script src="../js/adminScript.js"></script>
 </body>
 </html>

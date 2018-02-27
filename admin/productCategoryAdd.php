@@ -31,7 +31,7 @@
         <ul class="breadcrumb">
             <li><a href="../admin/home.php">Admin Panel</a></li>
             <li><a href="#">Product</a></li>
-            <li>Product Category</li>
+            <li>Add Product Category</li>
         </ul>
         <div class="main-content">
 

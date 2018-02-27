@@ -55,7 +55,7 @@ require_once("../includes/session.php");
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>";?>
-                                        <td><a href='../includes/adminDelCustomer.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm('Are You sure to delete !'); ' >Delete</a></td>
+                                        <td><a href='../includes/adminDelCustomer.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' >Delete</a></td>
                         <?php echo "</tr>";
                                 }
                             }else{
