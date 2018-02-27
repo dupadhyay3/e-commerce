@@ -92,8 +92,8 @@ require_once("../includes/session.php");
                         </div>
                         <div class="box-right">
                             <div class="box-input-group">
-                                <input class="box-input-field" type="file" name="fileImg" id="FileImg">
-                                <img class="product-img" src="" id="fileImgTag" onerror="this.src='../img/NoImg.png';"/>
+                                <input accept="image/*" class="box-input-field" type="file" name="fileImg" id="FileImg">
+                                <img name="fileImage" class="product-img" src="" id="fileImgTag" onerror="this.src='../img/NoImg.png';"/>
                                 <span id="errProImg" class="err"><?php echo $err[6]; ?></span>
                                 <label>Product Image</label>
                             </div>

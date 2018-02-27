@@ -52,10 +52,10 @@ require_once("../includes/session.php");
                                     echo "
                                     <tr>
                                         <td>$row[0]</td>
-                                        <td>$row[1]</td>
-                                        <td><a href='../includes/adminDelProductCategoryMain.php?delete_id=$row[0]' onclick='return confirm('Are You sure to delete !'); ' ><img class='icon' src='../img/delete.png'></a></td>
+                                        <td>$row[1]</td>";?>
+                                        <td><a href='../includes/adminDelProductCategoryMain.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
                                         <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
-                                    </tr>
+                        <?php echo "</tr>
                                     ";
                                 }
                             }else{
@@ -77,9 +77,17 @@ require_once("../includes/session.php");
                         <div class="pagination">
                             <?php
                                 for($i=1;$i<=$total_pages;$i++){
-                                    echo "<a href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
+                                    echo "<a class='active' href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
+                            <!-- <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#" class="active">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a> -->
                         </div>
                     </div>
                 </div>
@@ -101,17 +109,17 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT m.pcmName, s.pcsName  FROM pCategorySub s JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY m.pcmName ASC, pcsName ASC LIMIT $start_from, $limit ";
+                            $sql = "SELECT s.pcsId, m.pcmName, s.pcsName  FROM pCategorySub s JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY m.pcmName ASC, pcsName ASC LIMIT $start_from, $limit ";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
                                     echo "
                                     <tr>
-                                        <td>$row[0]</td>
                                         <td>$row[1]</td>
-                                        <td><a href='../includes/adminDelProductCategorySub.php?delete_id=$row[0]' onclick='return confirm('Are You sure to delete !'); ' ><img class='icon' src='../img/delete.png'></a></td>
+                                        <td>$row[2]</td>"; ?>
+                                        <td><a href='../includes/adminDelProductCategorySub.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
                                         <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
-                                    </tr>
+                        <?php echo "</tr>
                                     ";
                                 }
                             }else{
@@ -133,10 +141,19 @@ require_once("../includes/session.php");
                         <div class="pagination">
                             <?php
                                 for($i=1;$i<=$total_pages;$i++){
-                                    echo "<a href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
+                                    echo "<a class='active' href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
+                            <!-- <a href="#">&laquo;</a>
+                            <a href="#">1</a>
+                            <a href="#" class="active">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">&raquo;</a> -->
                         </div>
+                        
                     </div>
                 </div>
             </div>

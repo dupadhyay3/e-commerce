@@ -62,10 +62,9 @@ require_once("../includes/session.php");
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
-                                        <td>$row[6]</td>
-                                        <td><a href='../includes/adminDelAllAdd.php?delete_id=<?php echo $row[1]; ?>' onclick='return confirm('Are You sure to delete !'); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                    </tr>
-                                    ";
+                                        <td>$row[6]</td>";?>
+                                        <td><a href='../includes/adminDelAllAdd.php?delete_id=<?php echo $row[1]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
+                        <?php echo "</tr>";
                                 }
                             }else{
                                 echo "  
@@ -134,10 +133,9 @@ require_once("../includes/session.php");
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
-                                        <td>$row[6]</td>
-                                        <td><a href='../includes/adminDelShipAdd.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm('Are You sure to delete !'); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                    </tr>
-                                    ";
+                                        <td>$row[6]</td>"; ?>
+                                        <td><a href='../includes/adminDelShipAdd.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
+                        <?php echo "</tr>";
                                 }
                             }else{
                                 echo "  
@@ -206,10 +204,9 @@ require_once("../includes/session.php");
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
-                                        <td>$row[6]</td>
-                                        <td><a href='../includes/adminDelBillAdd.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm('Are You sure to delete !'); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                    </tr>
-                                    ";
+                                        <td>$row[6]</td>";?>
+                                        <td><a href='../includes/adminDelBillAdd.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
+                        <?php echo "</tr>";
                                 }
                             }else{
                                 echo "  

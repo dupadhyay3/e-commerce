@@ -224,29 +224,22 @@ $(document).ready(function() {
         //for Ajax Add Data into Database
         if (!isBlank($('#txtProName').val()) && !isBlank($('#txtProSKU').val()) && !isBlank($('#txtProPrice').val()) && !isBlank($('#txtProCatMain2').val()) && !isBlank($('#txtProCatSub2').val()) && !isBlank($('#txtStock').val()) && !isBlank($('#FileImg').val())) {
 
-            var formData = new FormData($('#proDetailForm')[0]);
-            // var name = $('#txtProName').val();
-            // var sku = $('#txtProSKU').val();
-            // var price = $('#txtProPrice').val();
-            // var main = $('#txtProCatMain2').val();
-            // var sub = $('#txtProCatSub2').val();
-            // var img = $('#fileImgTag').attr('src');
-            // var stock = $('#txtStock').val();
-            $.post("../includes/addProduct.php",
-                // {
-                formData,
-                // name1: name,
-                // sku1: sku,
-                // price1: price,
-                // main1: main,
-                // sub1: sub,
-                // stock1: stock,
-                // img1: img,
-                // },
-                function(data) {
+            $.ajax({
+                type: 'POST',
+                url: "../includes/addProduct.php",
+                data: new FormData(this), //previous page data will be posted to ajax page
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#btnAddPro').attr('disabled', 'disabled');
+                },
+                success: function(data) {
                     alert(data);
-                    $('#subCatForm')[0].reset();
-                });
+                    $('#proDetailForm')[0].reset();
+                    $('#btnAddPro').removeAttr('disabled');
+                }
+            });
         }
     });
 
@@ -271,5 +264,8 @@ $(document).ready(function() {
             $('#opSubProCat').empty();
         }
     });
+
+    // delete product details
+    
 
 });

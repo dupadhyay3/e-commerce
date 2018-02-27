@@ -39,7 +39,7 @@ require_once("../includes/session.php");
                             <th>Edit</th>
                         </tr>
                         <?php
-                            $limit = 5; 
+                            $limit = 4; 
                             if (isset($_GET["page"])) { 
                                 $page  = $_GET["page"]; 
                             } else { $page=1; };  
@@ -58,11 +58,10 @@ require_once("../includes/session.php");
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>
-                                        <td>$row[7]</td>
-                                        <td><a href='../includes/adminDelProduct.php?delete_id=$row[0]' onclick='return confirm(Are You sure to delete !);'><img class='icon' src='../img/delete.png'></a></td>
+                                        <td>$row[7]</td>"; ?>
+                                        <td><a name="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td>
                                         <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
-                                    </tr>
-                                    ";
+                        <?php echo "</tr>";
                                 }
                             }else{
                                 echo "  
@@ -74,23 +73,32 @@ require_once("../includes/session.php");
                 </table>
                 <div align="center">
                     <?php
-                            $sql="SELECT COUNT(custId) FROM customerDetails";
+                            $sql="SELECT COUNT(pId) FROM productDetails";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];
                             $total_pages = ceil($total_records/$limit); 
-                        ?> 
-                        <div class="pagination">
-                            <?php
+                    ?> 
+                    <div class="pagination">
+                        <?php
                                 for($i=1;$i<=$total_pages;$i++){
                                     echo "<a href='customerDetails.php?page=".$i."'>".$i."</a>";
                                 }
-                            ?>
-                        </div>
+                        ?>
+                        <!-- <a href="#">&laquo;</a>
+                        <a href="#">1</a>
+                        <a href="#" class="active">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a> -->
                     </div>
+                </div>
             </div>
         </div>
     </div>
     <?php require_once('../includes/adminFooter.php'); ?>
+    <script src="../js/adminScript.js"></script>
 </body>
 </html>
