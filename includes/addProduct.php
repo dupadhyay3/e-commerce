@@ -3,19 +3,11 @@
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
     
-    // $name = $_POST['name1']; //fatching value from URL
-    // $sku = $_POST['sku1']; //fatching value from URL
-    // $price = $_POST['price1']; //fatching value from URL
-    // $main = $_POST['main1']; //fatching value from URL
-    // $sub = $_POST['sub1']; //fatching value from URL
-    // $img = $_POST['img1']; //fatching value from URL
-    // $stock = $_POST['stock1']; //fatching value from URL 
     $name = $_POST['txtPName']; //fatching value from Previous Page
     $sku = $_POST['txtPSKU']; //fatching value from Previous Page
     $price = $_POST['txtPPrice']; //fatching value from Previous Page
     $main = $_POST['txtMain2']; //fatching value from Previous Page
     $sub = $_POST['txtSub2']; //fatching value from Previous Page
-    // $img = $_FILE['fileImg']['name']; //fatching value from Previous Page
     $stock = $_POST['txtPStock']; //fatching value from Previous Page
     $check = getimagesize($_FILES["fileImg"]["tmp_name"]);
     if($check !== false){

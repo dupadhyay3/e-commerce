@@ -221,7 +221,7 @@ $(document).ready(function() {
             $('#FileImg').removeClass('box-imput-field-error');
         }
 
-        //for Ajax Add Data into Database
+        //for Ajax Add Product Data into Database
         if (!isBlank($('#txtProName').val()) && !isBlank($('#txtProSKU').val()) && !isBlank($('#txtProPrice').val()) && !isBlank($('#txtProCatMain2').val()) && !isBlank($('#txtProCatSub2').val()) && !isBlank($('#txtStock').val()) && !isBlank($('#FileImg').val())) {
 
             $.ajax({
@@ -286,10 +286,136 @@ $(document).ready(function() {
     //         });
     //     }
     // });
+    // Add Product Details
+    $('#proDetailEditForm').submit(function() {
+        if (isBlank($('#editId').val())) {
+            window.location.href = "../admin/productDetails.php";
+        }
 
+        if (isBlank($('#txtProName').val())) {
+            $('#errName').fadeIn(1000);
+            $('#errName').text(msg[0]);
+            $('#txtProName').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errName').fadeOut(1000);
+            $('#errName').text('');
+            $('#txtProName').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProSKU').val())) {
+            $('#errSKU').fadeIn(1000);
+            $('#errSKU').text(msg[0]);
+            $('#txtProSKU').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errSKU').fadeOut(1000);
+            $('#errSKU').text('');
+            $('#txtProSKU').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProPrice').val())) {
+            $('#errPrice').fadeIn(1000);
+            $('#errPrice').text(msg[0]);
+            $('#txtProPrice').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errPrice').fadeOut(1000);
+            $('#errPrice').text('');
+            $('#txtProPrice').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProCatMain2').val())) {
+            $('#errProMain').fadeIn(1000);
+            $('#errProMain').text(msg[0]);
+            $('#txtProCatMain2').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProMain').fadeOut(1000);
+            $('#errProMain').text('');
+            $('#txtProCatMain2').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtProCatSub2').val())) {
+            $('#errProSub').fadeIn(1000);
+            $('#errProSub').text(msg[0]);
+            $('#txtProCatSub2').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProSub').fadeOut(1000);
+            $('#errProSub').text('');
+            $('#txtProCatSub2').removeClass('box-imput-field-error');
+        }
+
+        if (isBlank($('#txtStock').val())) {
+            $('#errProSub').fadeIn(1000);
+            $('#errProSub').text(msg[0]);
+            $('#txtProCatSub2').addClass('box-imput-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        } else {
+            $('#errProSub').fadeOut(1000);
+            $('#errProSub').text('');
+            $('#txtProCatSub2').removeClass('box-imput-field-error');
+        }
+
+
+        //for Ajax Add Product Data into Database
+        if (!isBlank($('#txtProName').val()) && !isBlank($('#txtProSKU').val()) && !isBlank($('#txtProPrice').val()) && !isBlank($('#txtProCatMain2').val()) && !isBlank($('#txtProCatSub2').val()) && !isBlank($('#txtStock').val()) && !isBlank($('#editId').val())) {
+
+            $.ajax({
+                type: 'POST',
+                url: "../includes/editProduct.php",
+                data: new FormData(this), //previous page data will be posted to ajax page
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function() {
+                    $('#btnAddPro').attr('disabled', 'disabled');
+                },
+                success: function(data) {
+                    alert(data);
+                    $('#proDetailEditForm')[0].reset();
+                    $('#btnAddPro').removeAttr('disabled');
+                    setTimeout(function() {
+                        window.location.href = "../admin/productDetails.php";
+                    }, 0100);
+                }
+            });
+        }
+    });
+
+    // Update Main Product Category
+    $('#mainCatEditForm').submit(function() {
+        if (isBlank($('#editId').val())) {
+            window.location.href = "../admin/productCategory.php";
+        }
+        if (!isBlank($('#txtProCatMain').val()) && !isBlank($('#editId').val())) {
+
+            //for Ajax Add Data into Database
+            var main = $('#txtProCatMain').val();
+            var eid = $('#editId').val();
+            $.post("../includes/editMainProCat.php", {
+                id: eid,
+                main1: main,
+            }, function(data) {
+                alert(data); //Get Data From the addMainPRoCat.php which data is echo in that page
+                //$('#alertMain').after(data);
+                $('#mainCatEditForm')[0].reset();
+            });
+
+            $('#errMain').fadeOut(1000);
+            $('txtProCatMain').removeClass('box-input-field-error');
+        } else {
+            $('#errMain').fadeIn(1000);
+            $('#errMain').text(msg[0]);
+            //$('#txtLoginPwd').focus();
+            $('#txtProCatMain').addClass('box-input-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        }
+    });
 
 });
 
-function editProDetails(id) {
-    window.location.href = "../admin/productDetailsEdit.php?edit=" + id;
+function editDetails(id, php) {
+    window.location.href = "../admin/" + php + "?edit=" + id;
 }

@@ -10,6 +10,8 @@ require_once("../includes/session.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product Category | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="../js/adminScript.js"></script>
 </head>
 <body>
     <?php 
@@ -54,7 +56,7 @@ require_once("../includes/session.php");
                                         <td>$row[0]</td>
                                         <td>$row[1]</td>";?>
                                         <td><a href='../includes/adminDelProductCategoryMain.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                        <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
+                                        <td><a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategoryMainEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>
                                     ";
                                 }
@@ -77,7 +79,7 @@ require_once("../includes/session.php");
                         <div class="pagination">
                             <?php
                                 for($i=1;$i<=$total_pages;$i++){
-                                    echo "<a class='active' href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
+                                    echo "<a href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
                             <!-- <a href="#">&laquo;</a>
@@ -118,7 +120,7 @@ require_once("../includes/session.php");
                                         <td>$row[1]</td>
                                         <td>$row[2]</td>"; ?>
                                         <td><a href='../includes/adminDelProductCategorySub.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                        <td><a href=''><img class='icon' src='../img/edit.png'></a></td>
+                                        <td><a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategorySubEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>
                                     ";
                                 }
@@ -141,7 +143,7 @@ require_once("../includes/session.php");
                         <div class="pagination">
                             <?php
                                 for($i=1;$i<=$total_pages;$i++){
-                                    echo "<a class='active' href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
+                                    echo "<a href='../admin/productCategory.php?page=".$i."'>".$i."</a>";
                                 }
                             ?>
                             <!-- <a href="#">&laquo;</a>

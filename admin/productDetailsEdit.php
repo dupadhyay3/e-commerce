@@ -1,6 +1,16 @@
 <?php
 require_once("../includes/connection.php");
 require_once("../includes/session.php");
+
+$sql = "SELECT * FROM productDetails WHERE pId =".$_GET['edit'];
+$result = $conn->query($sql);
+if($result->num_rows == 1){
+    while($row = $result->fetch_array()){
+        $rows = array($row[0],$row[1],$row[2],$row[3],$row[4],$row[5],$row[6],$row[7]);
+    }
+}else{
+    header("Refresh: 0.1; url=../admin/productDetails.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +18,7 @@ require_once("../includes/session.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Product Details | E-Commerce</title>
+    <title>Product Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
     <script src="../js/jquery-3.3.1.js"></script>
 </head>
@@ -27,22 +37,23 @@ require_once("../includes/session.php");
             <div class="tab-txt">
                 <div class="box-product">
                     <div class="box-header">
-                        <h1>Add Product Deatils</h1>
+                        <h1>Update Product Deatils</h1>
                     </div>
-                    <form id="proDetailForm" name="ProDetailForm" action="../admin/productDetailsAdd.php" method="post" enctype="multipart/form-data">
+                    <form id="proDetailEditForm" name="ProDetailEditForm" action="../admin/productDetailsEdit.php" method="post" enctype="multipart/form-data">
                         <div class="box-left">
+                            <input type="hidden" value="<?php echo $rows[0]; ?>" id="editId" name="id">
                             <div class="box-input-group">
-                                <input class="box-input-field" type="text" id="txtProName" name="txtPName" value="<?php echo $ele[0]; ?>">
+                                <input class="box-input-field" type="text" id="txtProName" name="txtPName" value="<?php echo $rows[1]; ?>">
                                 <span id="errName" class="err"><?php echo $err[0]; ?></span>
                                 <label>Product Name</label>
                             </div>
                             <div class="box-input-group">
-                                <input class="box-input-field" type="text" id="txtProSKU" name="txtPSKU" value="<?php echo $ele[1]; ?>">
+                                <input class="box-input-field" type="text" id="txtProSKU" name="txtPSKU" value="<?php echo $rows[2]; ?>">
                                 <span id="errSKU" class="err"><?php echo $err[1]; ?></span>
                                 <label>SKU</label>
                             </div>
                             <div class="box-input-group">
-                                <input class="box-input-field" type="text" id="txtProPrice" name="txtPPrice" value="<?php echo $ele[2]; ?>">
+                                <input class="box-input-field" type="text" id="txtProPrice" name="txtPPrice" value="<?php echo $rows[3]; ?>">
                                 <span id="errPrice" class="err"><?php echo $err[2]; ?></span>
                                 <label>Product Price</label>
                             </div>
@@ -60,7 +71,7 @@ require_once("../includes/session.php");
                                         }
                                     ?>
                                 </datalist>
-                                <input class="box-input-field" list="opMainProCat" type="text" id="txtProCatMain2" name="txtMain2" value="<?php echo $ele[3]; ?>">
+                                <input class="box-input-field" list="opMainProCat" type="text" id="txtProCatMain2" name="txtMain2" value="<?php echo $rows[4]; ?>">
                                 <span id="errProMain" class="err"><?php echo $err[3]; ?></span>
                                 <label>Main Category</label>
                             </div>
@@ -76,7 +87,7 @@ require_once("../includes/session.php");
                                         // }
                                     ?> -->
                                 </datalist>
-                                <input class="box-input-field" list="opSubProCat" type="text" id="txtProCatSub2" name="txtSub2" value="<?php echo $ele[4]; ?>">
+                                <input class="box-input-field" list="opSubProCat" type="text" id="txtProCatSub2" name="txtSub2" value="<?php echo $rows[5]; ?>">
                                 <span id="errProSub" class="err"><?php echo $err[4]; ?></span>
                                 <label>Sub Category</label>
                             </div>
@@ -85,7 +96,7 @@ require_once("../includes/session.php");
                                     <option value="In Stock">In Stock</option>
                                     <option value="Out of Stock">Out of Stock</option>
                                 </datalist>
-                                <input class="box-input-field" list="opStock" type="text" id="txtStock" name="txtPStock" value="<?php echo $ele[5]; ?>">
+                                <input class="box-input-field" list="opStock" type="text" id="txtStock" name="txtPStock" value="<?php echo $rows[7]; ?>">
                                 <span id="errProSub" class="err"><?php echo $err[5]; ?></span>
                                 <label>Stock</label>
                             </div>
@@ -93,13 +104,13 @@ require_once("../includes/session.php");
                         <div class="box-right">
                             <div class="box-input-group">
                                 <input accept="image/*" class="box-input-field" type="file" name="fileImg" id="FileImg">
-                                <img name="fileImage" class="product-img" src="" id="fileImgTag" onerror="this.src='../img/NoImg.png';"/>
+                                <img name="fileImage" class="product-img" src="<?php echo 'data:image/*;base64,'. base64_encode( $rows[6] )?>" id="fileImgTag" onerror="this.src='../img/NoImg.png';"/>
                                 <span id="errProImg" class="err"><?php echo $err[6]; ?></span>
                                 <label>Product Image</label>
                             </div>
                         </div>
                         <div class="clear"></div>
-                        <button type="submit" name="btnAddProduct" id="btnAddPro">Add</button>
+                        <button type="submit" name="btnEditProduct" id="btnEditPro">Update</button>
                     </form>
                 </div>
                 <!-- <div id="alertMain"></div> -->

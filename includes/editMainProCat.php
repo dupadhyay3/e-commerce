@@ -1,11 +1,11 @@
 <?php
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
-    $mainCategory = $_POST['main1'];//fatching value from URL
-    $subCategory = $_POST['sub1']; //fatching value from URL
-    $sql = "INSERT INTO pCategorySub (pcmId, pcsName) VALUES ($mainCategory,'$subCategory')";
+    $id = $_POST['id']; //fatching value from URL
+    $mainCategory = $mysqli->real_escape_string($_POST['main1']); //fatching value from URL
+    $sql = "UPDATE pCategoryMain SET pcmName = '$mainCategory' WHERE pcmId = $id";
     if ($conn->query($sql) === TRUE) {
-        echo "Record Added Successfully";
+        echo "Record Updated Successfully";
         // echo $popup='<div id="alertMsg" class="alert alert-success">\
         //                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span>\ 
         //                 Record Added Successfull\

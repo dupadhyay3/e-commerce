@@ -66,7 +66,7 @@ require_once("../includes/session.php");
                                         <!-- <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td> -->
                                         <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td>
                                         <!-- <td><a href='../admin/productDetailsEdit.php?edit=<?php echo $row[0]; ?>'><img class='icon' src='../img/edit.png'></a></td> -->
-                                        <td><a href='#' onclick="editProDetails(<?php echo $row[0]; ?>)"><img class='icon' src='../img/edit.png'></a></td>
+                                        <td><a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productDetailsEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>";
                                 }
                             }else{
