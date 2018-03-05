@@ -67,6 +67,7 @@ require_once("../includes/session.php");
     <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="0">
+    <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Admin Login | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
     <script src="../js/jquery-3.3.1.js"></script>

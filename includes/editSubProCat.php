@@ -4,7 +4,7 @@
 
     $id=$_POST['id']; //fatching value form URL
     $mainCategory = $_POST['main1'];//fatching value from URL
-    $subCategory = $_POST['sub1']; //fatching value from URL
+    $subCategory = addslashes($_POST['sub1']); //fatching value from URL
     $sql="UPDATE pCategorySub SET pcsName = '$subCategory', pcmId = $mainCategory WHERE pcsId = $id";
     if ($conn->query($sql) === TRUE) {
         echo "Record Updated Successfully";

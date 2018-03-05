@@ -9,7 +9,7 @@ require_once("../includes/session.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Product Details | E-Commerce</title>
+    <title>Order Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="../js/adminScript.js"></script>
@@ -22,24 +22,24 @@ require_once("../includes/session.php");
     <div class="right-main">
         <ul class="breadcrumb">
             <li><a href="../admin/home.php">Admin Panel</a></li>
-            <li><a href="#">Product</a></li>
-            <li>Product Details</li>
+            <li><a href="#">Order</a></li>
+            <li>Order Details</li>
         </ul>
         <div class="main-content">
             <div style="overflow-x:auto">
                 <table border=1 align="center">
                     <thead>
                         <tr>
+                            <th>odrId</th>
+                            <th>custId</th>
+                            <th>billId</th>
+                            <th>paymentMethod</th>
+                            <th>shipId</th>
+                            <th>shipMethodId</th>
                             <th>pId</th>
-                            <th>pImage</th>
-                            <th>pName</th>
-                            <th>pSKU</th>
-                            <th>pPrice</th>
-                            <th>pcmName</th>
-                            <th>pcsName</th>
-                            <th>pStock</th>
+                            <th>pcsId</th>
+                            <th>cartId</th>
                             <th>Delete</th>
-                            <th>Edit</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,20 +50,23 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;
 
-                            $sql = "SELECT p.pId, p.pImage, p.pName, p.pSKU, p.pPrice, m.pcmName, s.pcsName, p.pStock FROM productDetails p JOIN pCategorySub s ON s.pcsId=p.pcsId JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY p.pName ASC, m.pcmName ASC, s.pcsName ASC, p.pStock ASC LIMIT $start_from, $limit";
+                            // $sql = "SELECT p.pId, p.pImage, p.pName, p.pSKU, p.pPrice, m.pcmName, s.pcsName, p.pStock FROM productDetails p JOIN pCategorySub s ON s.pcsId=p.pcsId JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY p.pName ASC, m.pcmName ASC, s.pcsName ASC, p.pStock ASC LIMIT $start_from, $limit";
+                            $sql = "SELECT * FROM orderDetails LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
                                     echo "
-                                    <tr id='$row[0]'>
+                                    <tr>
                                         <td>$row[0]</td>
-                                        <td><img class='pImgTbl' src='data:image/*;base64,".base64_encode( $row[1] )."'  onerror='.'this.src='../img/NoImg.png';'/></td>
+                                        <td>$row[1]</td>
                                         <td>$row[2]</td>
                                         <td>$row[3]</td>
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>
-                                        <td>$row[7]</td>"; ?>
+                                        <td>$row[7]</td>
+                                        <td>$row[8]</td>
+                                        <td>$row[9]</td>"; ?>
                                         <!-- <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td> -->
                                         <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td>
                                         <!-- <td><a href='../admin/productDetailsEdit.php?edit=<?php echo $row[0]; ?>'><img class='icon' src='../img/edit.png'></a></td> -->
@@ -81,7 +84,7 @@ require_once("../includes/session.php");
                 </table>
                 <div align="center">
                     <?php
-                            $sql="SELECT COUNT(pId) FROM productDetails";
+                            $sql="SELECT COUNT(odrId) FROM orderDetails";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];
@@ -90,7 +93,7 @@ require_once("../includes/session.php");
                     <div class="pagination">
                         <?php
                                 for($i=1;$i<=$total_pages;$i++){
-                                    echo "<a href='productDetails.php?page=".$i."'>".$i."</a>";
+                                    echo "<a href='orderDetails.php?page=".$i."'>".$i."</a>";
                                 }
                         ?>
                         <!-- <a href="#">&laquo;</a>

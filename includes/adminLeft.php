@@ -27,6 +27,6 @@
         <a id="product2" href="../admin/productCategoryAdd.php">Add Product Category</a>
     </div>
     <div class="left-menu-items">
-        <a id="order" href="#">Order</a>
+        <a id="order" href="../admin/orderDetails.php">Order</a>
     </div>
 </div>

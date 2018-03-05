@@ -414,6 +414,41 @@ $(document).ready(function() {
         }
     });
 
+    // Update Sub Product Category
+    $('#subCatEditForm').submit(function() {
+        if (isBlank($('#editId').val())) {
+            window.location.href = "../admin/productCategory.php";
+        }
+        if (!isBlank($('#txtProCatSub').val()) && !isBlank($('#txtProCatMain1').val())) {
+            //for Ajax Add Data into Database
+            var eid = $('#editId').val();
+            var main = $('#txtProCatMain1').val();
+            var sub = $('#txtProCatSub').val();
+            $.post("../includes/editSubProCat.php", {
+                id: eid,
+                main1: main,
+                sub1: sub,
+            }, function(data) {
+                alert(data);
+                $('#subCatEditForm')[0].reset();
+            });
+
+            $('#errMainSub').fadeOut(1000);
+            $('txtProCatMain1').removeClass('box-input-field-error');
+            $('#errSub').fadeOut(1000);
+            $('txtProCatSub').removeClass('box-input-field-error');
+
+        } else {
+            $('#errSub').fadeIn(1000);
+            $('#errSub').text(msg[0]);
+            $('#errMainSub').fadeIn(1000);
+            $('#errMainSub').text(msg[0]);
+            $('#txtProCatSub').addClass('box-input-field-error');
+            $('#txtProCatMain1').addClass('box-input-field-error');
+            event.preventDefault(); //use to prevent submiting form
+        }
+    });
+
 });
 
 function editDetails(id, php) {

@@ -1,5 +1,5 @@
 <?php
-// For Add Product Details AJAZ
+// For Update Product Details AJAX
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
 
@@ -34,20 +34,20 @@
             }
         }
     }else{
-        echo $sql = "UPDATE productDetails SET pName = '$name', pSKU = '$sku', pPrice = $price, pcmId = $main, pcsId = $sub, pStock = '$stock' WHERE pId =$id";
-            if ($conn->query($sql) === TRUE) {
-                echo "Record Updated Successfully";
-                // echo $popup='<div id="alertMsg" class="alert alert-success">\
-                //                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span>\ 
-                //                 Record Added Successfull\
-                //             </div>';
-            }else{
-                echo "Error:". $conn->error;
-                // echo $popup='<div id="alertMsg" class="alert alert-danger">\
-                //                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span>\
-                //                 Erro: $conn->error;\
-                //             </div>';
-            }
+        $sql = "UPDATE productDetails SET pName = '$name', pSKU = '$sku', pPrice = $price, pcmId = $main, pcsId = $sub, pStock = '$stock' WHERE pId =$id";
+        if ($conn->query($sql) === TRUE) {
+            echo "Record Updated Successfully";
+            // echo $popup='<div id="alertMsg" class="alert alert-success">\
+            //                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span>\ 
+            //                 Record Added Successfull\
+            //             </div>';
+        }else{
+            echo "Error:". $conn->error;
+            // echo $popup='<div id="alertMsg" class="alert alert-danger">\
+            //                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span>\
+            //                 Erro: $conn->error;\
+            //             </div>';
+        }
     }
     $conn->close();
 ?>

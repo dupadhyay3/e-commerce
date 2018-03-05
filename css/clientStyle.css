@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+header,
+footer {
+    margin: auto;
+}
+
+body,
+header,
+footer {
+    vertical-align: middle;
+}
+
+body,
+header,
+footer {
+    text-align: center;
+}
+
+html {
+    background-color: #f1f1f1;
+    font-family: "Roboto";
+}
+
+a {
+    text-decoration: none;
+}
+
+header,
+footer {
+    background-color: #009688;
+}
+
+header,
+footer {
+    color: #ffffff;
+}
+
+footer a {
+    color: rgb(46, 23, 252);
+}
+
+footer {
+    padding: 1%;
+}

@@ -1,7 +1,7 @@
 <?php
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
-    $mainCategory = $_POST['main1']; //fatching value from URL
+    $mainCategory = addslashes($_POST['main1']); //fatching value from URL
     $sql = "INSERT INTO pCategoryMain (pcmName) VALUES ('$mainCategory')";
     if ($conn->query($sql) === TRUE) {
         echo "Record Added Successfully";

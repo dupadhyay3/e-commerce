@@ -3,7 +3,7 @@
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
     
-    $name = $_POST['txtPName']; //fatching value from Previous Page
+    $name = addslashes($_POST['txtPName']); //fatching value from Previous Page
     $sku = $_POST['txtPSKU']; //fatching value from Previous Page
     $price = $_POST['txtPPrice']; //fatching value from Previous Page
     $main = $_POST['txtMain2']; //fatching value from Previous Page

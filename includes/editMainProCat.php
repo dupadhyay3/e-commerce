@@ -2,7 +2,7 @@
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
     $id = $_POST['id']; //fatching value from URL
-    $mainCategory = $mysqli->real_escape_string($_POST['main1']); //fatching value from URL
+    $mainCategory = addslashes($_POST['main1']); //fatching value from URL
     $sql = "UPDATE pCategoryMain SET pcmName = '$mainCategory' WHERE pcmId = $id";
     if ($conn->query($sql) === TRUE) {
         echo "Record Updated Successfully";

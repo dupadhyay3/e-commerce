@@ -9,6 +9,7 @@ require_once("../includes/session.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product Category | E-Commerce</title>
+    <link rel="shortcut icon" href="../img/favicon.ico" />
     <link rel="stylesheet" href="../css/adminStyle.css">
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="../js/adminScript.js"></script>
