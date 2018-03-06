@@ -10,10 +10,6 @@ $(document).ready(function() {
         $("#headerCart.header-cart").append("<span class=\"itemCount\">0</span>");
     }
 
-
-
-
-
 });
 
 function jumpUrl(id, php) {
