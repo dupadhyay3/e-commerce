@@ -20,6 +20,11 @@ require("includes/connection.php");
     <div class="container">
 
         <div class="container-vertical-list">
+            <div>
+                <?php
+                    
+                ?>
+            </div>
             <div class="card">
                 <img src="img/loader.gif" alt="Avatar">
                 <!-- <img src="img/loader.gif" alt="Avatar" style="width:100%;"> -->
