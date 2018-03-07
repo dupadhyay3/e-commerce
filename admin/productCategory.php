@@ -36,10 +36,9 @@ require_once("../includes/session.php");
                 <div class="tab-txt">
                     <table>
                         <tr>
-                            <th>pcmId</th>
+                            <th>pcm_id</th>
                             <th>Main Category</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th colspan="2">Action</th>
                         </tr>
                         <?php
                             $limit = 6; 
@@ -48,7 +47,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT pcmId, pcmName FROM pCategoryMain LIMIT $start_from, $limit";
+                            $sql = "SELECT pcm_id, pcm_name FROM p_category_main LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -56,8 +55,8 @@ require_once("../includes/session.php");
                                     <tr>
                                         <td>$row[0]</td>
                                         <td>$row[1]</td>";?>
-                                        <td><a href='../includes/adminDelProductCategoryMain.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                        <td><a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategoryMainEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
+                                        <td colspan="2"><a href='../includes/adminDelProductCategoryMain.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a> &nbsp;
+                                        <a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategoryMainEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>
                                     ";
                                 }
@@ -71,7 +70,7 @@ require_once("../includes/session.php");
                     </table>
                     <div align="center">
                         <?php
-                            $sql="SELECT COUNT(pcmId) FROM pCategoryMain";
+                            $sql="SELECT COUNT(pcm_id) FROM p_category_main";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];
@@ -102,8 +101,7 @@ require_once("../includes/session.php");
                         <tr>                            
                             <th>Main Category</th>
                             <th>Sub Category</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th colspan="2">Action</th>
                         </tr>
                         <?php
                             $limit = 6; 
@@ -112,7 +110,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT s.pcsId, m.pcmName, s.pcsName  FROM pCategorySub s JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY m.pcmName ASC, pcsName ASC LIMIT $start_from, $limit ";
+                            $sql = "SELECT s.pcs_id, m.pcm_name, s.pcs_name  FROM p_category_sub s JOIN p_category_main m ON m.pcm_id = s.pcm_id ORDER BY m.pcm_name ASC, pcs_name ASC LIMIT $start_from, $limit ";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -120,8 +118,8 @@ require_once("../includes/session.php");
                                     <tr>
                                         <td>$row[1]</td>
                                         <td>$row[2]</td>"; ?>
-                                        <td><a href='../includes/adminDelProductCategorySub.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a></td>
-                                        <td><a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategorySubEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
+                                        <td colspan="2"><a href='../includes/adminDelProductCategorySub.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a> &nbsp;
+                                        <a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategorySubEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>
                                     ";
                                 }
@@ -135,7 +133,7 @@ require_once("../includes/session.php");
                     </table>
                     <div align="center">
                         <?php
-                            $sql="SELECT COUNT(pcsId) FROM pCategorySub";
+                            $sql="SELECT COUNT(pcs_id) FROM p_category_sub";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];

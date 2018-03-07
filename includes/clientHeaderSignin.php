@@ -1,3 +1,4 @@
+<a class="cart_anchor"></a>
 <header>
     <span class="header-logo">
         e-Commerce Portal

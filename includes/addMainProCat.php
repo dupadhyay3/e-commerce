@@ -2,7 +2,7 @@
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
     $mainCategory = addslashes($_POST['main1']); //fatching value from URL
-    $sql = "INSERT INTO pCategoryMain (pcmName) VALUES ('$mainCategory')";
+    $sql = "INSERT INTO p_category_main (pcm_name) VALUES ('$mainCategory')";
     if ($conn->query($sql) === TRUE) {
         echo "Record Added Successfully";
         // echo $popup='<div id="alertMsg" class="alert alert-success">\

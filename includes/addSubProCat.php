@@ -3,7 +3,7 @@
     require_once("../includes/connection.php");
     $mainCategory = $_POST['main1'];//fatching value from URL
     $subCategory = addslashes($_POST['sub1']); //fatching value from URL
-    $sql = "INSERT INTO pCategorySub (pcmId, pcsName) VALUES ($mainCategory,'$subCategory')";
+    $sql = "INSERT INTO p_category_sub (pcmId, pcs_name) VALUES ($mainCategory,'$subCategory')";
     if ($conn->query($sql) === TRUE) {
         echo "Record Added Successfully";
         // echo $popup='<div id="alertMsg" class="alert alert-success">\

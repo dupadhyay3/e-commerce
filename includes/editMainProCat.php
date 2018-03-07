@@ -3,7 +3,7 @@
     require_once("../includes/connection.php");
     $id = $_POST['id']; //fatching value from URL
     $mainCategory = addslashes($_POST['main1']); //fatching value from URL
-    $sql = "UPDATE pCategoryMain SET pcmName = '$mainCategory' WHERE pcmId = $id";
+    $sql = "UPDATE p_category_main SET pcm_name = '$mainCategory' WHERE pcm_id = $id";
     if ($conn->query($sql) === TRUE) {
         echo "Record Updated Successfully";
         // echo $popup='<div id="alertMsg" class="alert alert-success">\

@@ -52,7 +52,7 @@ require_once("../includes/session.php");
                             <div class="box-input-group">
                                 <datalist id="opMainProCat" >
                                     <?php
-                                        $sql = "SELECT * FROM pCategoryMain";
+                                        $sql = "SELECT * FROM p_category_main";
                                         $result = $conn->query($sql);
                                         if($result->num_rows > 0){
                                             while($row = $result->fetch_array()){
@@ -68,11 +68,11 @@ require_once("../includes/session.php");
                             <div class="box-input-group">
                                 <datalist id="opSubProCat" >
                                     <!-- <?php
-                                        // $sql = "SELECT * FROM pCategorySub";
+                                        // $sql = "SELECT * FROM p_category_sub WHERE pcm_id =".$row[0];
                                         // $result = $conn->query($sql);
                                         // if($result->num_rows > 0){
-                                        //     while($row = $result->fetch_array()){
-                                        //         echo "<option value='$row[0]'>$row[2]</option>";
+                                        //     while($row1 = $result->fetch_array()){
+                                        //         echo "<option value='$row1[0]'>$row1[2]</option>";
                                         //     }
                                         // }
                                     ?> -->
@@ -83,7 +83,7 @@ require_once("../includes/session.php");
                             </div>
                             <div class="box-input-group">
                                 <datalist id="opStock" >
-                                    <option value="In Stock">In Stock</option>
+                                    <option value="Available In Stock">Available In Stock</option>
                                     <option value="Out of Stock">Out of Stock</option>
                                 </datalist>
                                 <input class="box-input-field" list="opStock" type="text" id="txtStock" name="txtPStock" value="<?php echo $ele[5]; ?>">

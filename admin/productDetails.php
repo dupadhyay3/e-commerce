@@ -11,6 +11,7 @@ require_once("../includes/session.php");
     <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Product Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="../js/jquery-3.3.1.js"></script>
     <script src="../js/adminScript.js"></script>
 </head>
@@ -30,16 +31,15 @@ require_once("../includes/session.php");
                 <table border=1 align="center">
                     <thead>
                         <tr>
-                            <th>pId</th>
-                            <th>pImage</th>
-                            <th>pName</th>
-                            <th>pSKU</th>
-                            <th>pPrice</th>
+                            <th>p_id</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>SKU</th>
+                            <th style="width:100px;">Price</th>
                             <th>pcmName</th>
                             <th>pcsName</th>
-                            <th>pStock</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>Stock</th>
+                            <th colspan="2" style="min-width:70px;max-width:70px;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,7 +50,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;
 
-                            $sql = "SELECT p.pId, p.pImage, p.pName, p.pSKU, p.pPrice, m.pcmName, s.pcsName, p.pStock FROM productDetails p JOIN pCategorySub s ON s.pcsId=p.pcsId JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY p.pName ASC, m.pcmName ASC, s.pcsName ASC, p.pStock ASC LIMIT $start_from, $limit";
+                            $sql = "SELECT p.p_id, p.p_image, p.p_name, p.p_sku, p.p_price, m.pcm_name, s.pcs_name, p.p_stock FROM product_details p JOIN p_category_sub s ON s.pcs_id=p.pcs_id JOIN p_category_main m ON m.pcm_id = s.pcm_id ORDER BY p.p_name ASC, m.pcm_name ASC, s.pcs_name ASC, p.p_stock ASC LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -60,14 +60,14 @@ require_once("../includes/session.php");
                                         <td><img class='pImgTbl' src='data:image/*;base64,".base64_encode( $row[1] )."'  onerror='.'this.src='../img/NoImg.png';'/></td>
                                         <td>$row[2]</td>
                                         <td>$row[3]</td>
-                                        <td>$row[4]</td>
+                                        <td><i class='fa fa-inr'></i>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>
                                         <td>$row[7]</td>"; ?>
                                         <!-- <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td> -->
-                                        <td><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a></td>
+                                        <td colspan="2"><a class="del" href='../includes/adminDelProduct.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !");'><img class='icon' src='../img/delete.png'></a> &nbsp;
                                         <!-- <td><a href='../admin/productDetailsEdit.php?edit=<?php echo $row[0]; ?>'><img class='icon' src='../img/edit.png'></a></td> -->
-                                        <td><a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productDetailsEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
+                                        <a href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productDetailsEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>";
                                 }
                             }else{
@@ -81,7 +81,7 @@ require_once("../includes/session.php");
                 </table>
                 <div align="center">
                     <?php
-                            $sql="SELECT COUNT(pId) FROM productDetails";
+                            $sql="SELECT COUNT(p_id) FROM product_details";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];

@@ -30,7 +30,7 @@ require_once("../includes/session.php");
                 <table border=1 align="center">
                     <thead>
                         <tr>
-                            <th>odrId</th>
+                            <th>odr_id</th>
                             <th>custId</th>
                             <th>billId</th>
                             <th>paymentMethod</th>
@@ -39,7 +39,7 @@ require_once("../includes/session.php");
                             <th>pId</th>
                             <th>pcsId</th>
                             <th>cartId</th>
-                            <th>Delete</th>
+                            <th colspan="3">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,7 +51,7 @@ require_once("../includes/session.php");
                             $start_from = ($page-1) * $limit;
 
                             // $sql = "SELECT p.pId, p.pImage, p.pName, p.pSKU, p.pPrice, m.pcmName, s.pcsName, p.pStock FROM productDetails p JOIN pCategorySub s ON s.pcsId=p.pcsId JOIN pCategoryMain m ON m.pcmId = s.pcmId ORDER BY p.pName ASC, m.pcmName ASC, s.pcsName ASC, p.pStock ASC LIMIT $start_from, $limit";
-                            $sql = "SELECT * FROM orderDetails LIMIT $start_from, $limit";
+                            $sql = "SELECT * FROM order_details LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -84,7 +84,7 @@ require_once("../includes/session.php");
                 </table>
                 <div align="center">
                     <?php
-                            $sql="SELECT COUNT(odrId) FROM orderDetails";
+                            $sql="SELECT COUNT(odr_id) FROM order_details";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];

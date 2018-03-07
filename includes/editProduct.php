@@ -18,7 +18,7 @@
             $image = $_FILES['fileImg']['tmp_name'];
             $imgContent = addslashes(file_get_contents($image));
 
-            $sql = "UPDATE productDetails SET pName = '$name', pSKU = '$sku', pPrice = $price, pcmId = $main, pcsId = $sub, pImage = '$imgContent', pStock = '$stock' WHERE pId = $id";
+            $sql = "UPDATE product_details SET p_name = '$name', p_sku = '$sku', p_price = $price, pcm_id = $main, pcs_id = $sub, p_image = '$imgContent', p_stock = '$stock' WHERE p_id = $id";
             if ($conn->query($sql) === TRUE) {
                 echo "Record Updated Successfully";
                 // echo $popup='<div id="alertMsg" class="alert alert-success">\
@@ -34,7 +34,7 @@
             }
         }
     }else{
-        $sql = "UPDATE productDetails SET pName = '$name', pSKU = '$sku', pPrice = $price, pcmId = $main, pcsId = $sub, pStock = '$stock' WHERE pId =$id";
+        $sql = "UPDATE product_details SET p_name = '$name', p_sku = '$sku', p_price = $price, pcm_id = $main, pcs_id = $sub, p_stock = '$stock' WHERE p_id =$id";
         if ($conn->query($sql) === TRUE) {
             echo "Record Updated Successfully";
             // echo $popup='<div id="alertMsg" class="alert alert-success">\

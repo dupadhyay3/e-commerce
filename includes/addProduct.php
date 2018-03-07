@@ -14,7 +14,7 @@
         $image = $_FILES['fileImg']['tmp_name'];
         $imgContent = addslashes(file_get_contents($image));
 
-        $sql = "INSERT INTO productDetails (pName,pSKU,pPrice, pcmId, pcsId, pImage,pStock) VALUES ('$name', '$sku', $price, $main, $sub, '$imgContent', '$stock')";
+        $sql = "INSERT INTO product_details (p_name,p_sku,p_price, pcm_id, pcs_id, p_image,p_stock) VALUES ('$name', '$sku', $price, $main, $sub, '$imgContent', '$stock')";
         if ($conn->query($sql) === TRUE) {
             echo "Record Added Successfully";
             // echo $popup='<div id="alertMsg" class="alert alert-success">\

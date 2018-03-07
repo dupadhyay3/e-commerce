@@ -2,7 +2,7 @@
 require_once("../includes/connection.php");
 require_once("../includes/session.php");
 
-$sql = "SELECT * FROM productDetails WHERE pId =".$_GET['edit'];
+$sql = "SELECT * FROM product_details WHERE p_id =".$_GET['edit'];
 $result = $conn->query($sql);
 if($result->num_rows == 1){
     while($row = $result->fetch_array()){
@@ -63,7 +63,7 @@ if($result->num_rows == 1){
                             <div class="box-input-group">
                                 <datalist id="opMainProCat" >
                                     <?php
-                                        $sql = "SELECT * FROM pCategoryMain";
+                                        $sql = "SELECT * FROM p_category_main";
                                         $result = $conn->query($sql);
                                         if($result->num_rows > 0){
                                             while($row = $result->fetch_array()){
@@ -79,11 +79,11 @@ if($result->num_rows == 1){
                             <div class="box-input-group">
                                 <datalist id="opSubProCat" >
                                     <!-- <?php
-                                        // $sql = "SELECT * FROM pCategorySub";
+                                        // $sql = "SELECT * FROM p_category_sub WHERE pcm_id =".$row[0];
                                         // $result = $conn->query($sql);
                                         // if($result->num_rows > 0){
-                                        //     while($row = $result->fetch_array()){
-                                        //         echo "<option value='$row[0]'>$row[2]</option>";
+                                        //     while($row1 = $result->fetch_array()){
+                                        //         echo "<option value='$row1[0]'>$row1[2]</option>";
                                         //     }
                                         // }
                                     ?> -->

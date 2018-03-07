@@ -11,6 +11,9 @@ require_once("../includes/session.php");
     <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Customer Details | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="../js/adminScript.js"></script>
 </head>
 <body>
     <?php 
@@ -31,10 +34,9 @@ require_once("../includes/session.php");
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
-                            <th>Password</th>
                             <th>Gender</th>
                             <th>Mobile No.</th>
-                            <th>Delete</th>   
+                            <th colspan="3">Action</th>   
                         </tr>
                         <?php
                             $limit = 8; 
@@ -43,7 +45,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;
 
-                            $sql = "SELECT custId, FirstName, LastName,Email,Pwd,Gender,MobNo FROM customerDetails LIMIT $start_from, $limit";
+                            $sql = "SELECT cust_id, first_name, last_name,email,gender,mobile_no FROM customer_details LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -56,7 +58,9 @@ require_once("../includes/session.php");
                                         <td>$row[4]</td>
                                         <td>$row[5]</td>
                                         <td>$row[6]</td>";?>
-                                        <td><a href='../includes/adminDelCustomer.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' >Delete</a></td>
+                                        <td><a title="Address" href='/customerAddress.php?id=<?php echo $row[0]; ?>'><i class="fa fa-address-card"></i></a> &nbsp;
+                                        <a title="Delete" href='../includes/adminDelCustomer.php?delete_id=<?php echo $row[0]; ?>' onclick='return confirm("Are You sure to delete !"); ' ><img class='icon' src='../img/delete.png'></a> &nbsp;
+                                        <a title="Edit" href='#' onclick="editDetails(<?php echo $row[0]; ?>,'productCategorySubEdit.php')"><img class='icon' src='../img/edit.png'></a></td>
                         <?php echo "</tr>";
                                 }
                             }else{
@@ -69,7 +73,7 @@ require_once("../includes/session.php");
                 </table>
                 <div align="center">
                     <?php
-                            $sql="SELECT COUNT(custId) FROM customerDetails";
+                            $sql="SELECT COUNT(cust_id) FROM customer_details";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];

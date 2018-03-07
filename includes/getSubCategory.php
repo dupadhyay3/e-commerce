@@ -2,7 +2,7 @@
 // For Product Sub Category AJAX
     require_once("../includes/session.php");
     require_once("../includes/connection.php");
-    $sql = "SELECT * FROM pCategorySub WHERE pcmId =".$_POST['id'];
+    $sql = "SELECT * FROM p_category_sub WHERE pcm_id =".$_POST['id'];
     $result = $conn->query($sql);
     $json=[];
     while($row = $result->fetch_array()){

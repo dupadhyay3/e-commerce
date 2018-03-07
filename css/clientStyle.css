@@ -13,7 +13,9 @@ footer,
 .container-vertical-list,
 .addToCart,
 .moreDetails,
-.card {
+.card,
+.list-header,
+.card-qty {
     margin: auto;
 }
 
@@ -27,7 +29,8 @@ footer,
 .header-cart img,
 .addToCart,
 .moreDetails,
-.card {
+.card,
+.card-qty {
     vertical-align: middle;
 }
 
@@ -40,7 +43,8 @@ footer,
 .container-vertical-list,
 .addToCart,
 .moreDetails,
-.card {
+.card,
+.list-header {
     text-align: center;
 }
 
@@ -197,8 +201,8 @@ li.dropdown {
     display: flex;
     /* overflow-x: auto; */
     white-space: nowrap;
-    overflow-y: hidden;
-    overflow-x: scroll;
+    /* overflow-y: hidden; */
+    overflow-x: auto;
     min-height: 360px;
     margin: 0.5%;
     margin-bottom: 1.5%;
@@ -214,7 +218,8 @@ li.dropdown {
 
 /* card view start */
 
-.card {
+.card,
+.list-header {
     background-color: #ffffff;
 }
 
@@ -231,7 +236,7 @@ li.dropdown {
 }
 
 .card img {
-    width: 100%;
+    width: 241.5px;
     height: 250px;
     border-radius: 5px 5px 0 0;
     /* border-bottom: 1px solid rgba(0, 0, 0, 0.3); */
@@ -239,6 +244,10 @@ li.dropdown {
 
 .card hr {
     margin: 5px;
+}
+
+.card-qty {
+    width: 50px;
 }
 
 .card-container {
@@ -269,3 +278,13 @@ ul.sub-menu {
 
 
 /* card view end */
+
+.list-header {
+    display: block;
+    padding: 10px 16px;
+    border-radius: 5px;
+    width: 95%;
+    margin-top: 1%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .30);
+    color: #009688;
+}

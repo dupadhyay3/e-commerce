@@ -70,7 +70,7 @@
                             <div class="box-input-group">
                                 <datalist id="opMainProCat" >
                                     <?php
-                                        $sql = "SELECT * FROM pCategoryMain";
+                                        $sql = "SELECT * FROM p_category_main";
                                         $result = $conn->query($sql);
                                         if($result->num_rows > 0){
                                             while($row = $result->fetch_array()){

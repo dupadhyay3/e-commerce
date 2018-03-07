@@ -11,6 +11,8 @@ require_once("../includes/session.php");
     <link rel="shortcut icon" href="../img/favicon.ico" />
     <title>Customer Address | E-Commerce</title>
     <link rel="stylesheet" href="../css/adminStyle.css">
+    <script src="../js/adminScript.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
 </head>
 <body>
     <?php 
@@ -35,14 +37,14 @@ require_once("../includes/session.php");
                 <div class="tab-txt">
                     <table>
                         <tr>
-                            <th>custId</th>
-                            <th>addId</th>
+                            <th>cust_id</th>
+                            <th>add_id</th>
                             <th>Address</th>
                             <th>City</th>
                             <th>Zip</th>
                             <th>State</th>
                             <th>Country</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                         <?php
                             $limit = 8; 
@@ -51,7 +53,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT c.custId, a.addId, a.Address, a.City, a.Zip, a.State, a.Country FROM address a JOIN customerDetails c ON c.custId = a.custId LIMIT $start_from, $limit";
+                            $sql = "SELECT c.cust_id, a.add_id, a.address, a.city, a.zip, a.state, a.country FROM address a JOIN customer_details c ON c.cust_id = a.cust_id LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -77,7 +79,7 @@ require_once("../includes/session.php");
                     </table>
                     <div align="center">
                         <?php
-                            $sql="SELECT COUNT(addId) FROM address";
+                            $sql="SELECT COUNT(add_id) FROM address";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];
@@ -106,14 +108,15 @@ require_once("../includes/session.php");
                 <div class="tab-txt">
                     <table>
                         <tr>
-                            <th>shipId</th>                            
-                            <th>custId</th>
+                            <th>ship_id</th>                            
+                            <th>cust_id</th>
+                            <th>add_id</th>
                             <th>Address</th>
                             <th>City</th>
                             <th>Zip</th>
                             <th>State</th>
                             <th>Country</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                         <?php
                             $limit = 8; 
@@ -122,7 +125,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT s.shipId, c.custId, s.Address, s.City, s.Zip, s.State, s.Country FROM shipAdd s JOIN customerDetails c ON c.custId = s.custId LIMIT $start_from, $limit";
+                            $sql = "SELECT s.ship_id, c.cust_id, a.address, a.city, a.zip, a.state, a.country FROM ship_add s JOIN customer_details c ON c.cust_id = s.cust_id JOIN address a ON a.add_id = s.add_id AND a.cust_id = c.cust_id LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -148,7 +151,7 @@ require_once("../includes/session.php");
                     </table>
                     <div align="center">
                         <?php
-                            $sql="SELECT COUNT(shipId) FROM shipAdd";
+                            $sql="SELECT COUNT(ship_id) FROM ship_add";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];
@@ -177,13 +180,14 @@ require_once("../includes/session.php");
                 <div class="tab-txt">
                     <table>
                         <tr>
-                            <th>billId</th>                            
-                            <th>custId</th>
-                            <th>Address</th>
-                            <th>City</th>
-                            <th>Zip</th>
-                            <th>State</th>
-                            <th>Country</th>
+                            <th>bill_id</th>                            
+                            <th>cust_id</th>
+                            <th>add_id</th>
+                            <th>address</th>
+                            <th>city</th>
+                            <th>zip</th>
+                            <th>state</th>
+                            <th>country</th>
                             <th>Delete</th>
                         </tr>
                         <?php
@@ -193,7 +197,7 @@ require_once("../includes/session.php");
                             } else { $page=1; };  
                             $start_from = ($page-1) * $limit;  
                             
-                            $sql = "SELECT b.billId, c.custId, b.Address, b.City, b.Zip, b.State, b.Country FROM billAdd b JOIN customerDetails c ON c.custId = b.custId LIMIT $start_from, $limit";
+                            $sql = "SELECT b.bill_id, c.cust_id, a.address, a.city, a.zip, a.state, a.country FROM bill_add b JOIN customer_details c ON c.cust_id = b.cust_id JOIN address a ON a.add_id = b.add_id AND a.cust_id = c.cust_id LIMIT $start_from, $limit";
                             $result=$conn->query($sql); 
                             if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){
@@ -219,7 +223,7 @@ require_once("../includes/session.php");
                     </table>
                     <div align="center">
                     <?php
-                            $sql="SELECT COUNT(billId) FROM billAdd";
+                            $sql="SELECT COUNT(bill_id) FROM bill_add";
                             $result = $conn->query($sql);
                             $row = $result->fetch_array();
                             $total_records = $row[0];

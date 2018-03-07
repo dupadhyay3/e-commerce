@@ -10,7 +10,7 @@
         return $data;
     }
 
-$sql = "SELECT * FROM pCategoryMain WHERE pcmId =".$_GET['edit'];
+$sql = "SELECT * FROM p_category_main WHERE pcm_id =".$_GET['edit'];
 $result = $conn->query($sql);
 if($result->num_rows == 1){
     while($row = $result->fetch_array()){
