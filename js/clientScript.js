@@ -12,7 +12,7 @@ $(document).ready(function() {
         var cart = $('#headerCart'); //select cart logo or location
         var imgToAnimate = $(this).parent('.card-btn').parent('.card').find('img').eq(0); // product image select for fly animation 
         var qty = $(this).parent('.card-btn').find('.card-container').children('.card-qty').val();
-        alert(qty);
+        // alert(qty);
         flyToCart(imgToAnimate, cart);
         cartQty();
 
