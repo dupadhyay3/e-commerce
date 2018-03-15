@@ -1,23 +1,18 @@
-var items = 0;
+if (sessionStorage) {
+    sessionStorage.setItem("totalCartItems", 0);
+}
 // Page Loading Event 
 $(document).ready(function() {
-
-    cartQty();
-
     // Add To Fly Animation First Try
     $('.addToCart').click(function() {
-
         scrollTop();
-
         var cart = $('#headerCart'); //select cart logo or location
         var imgToAnimate = $(this).parent('.card-btn').parent('.card').find('img').eq(0); // product image select for fly animation 
-        var qty = $(this).parent('.card-btn').find('.card-container').children('.card-qty').val();
-        // alert(qty);
+        var qty1 = $(this).parent('.card-btn').parent('.card').find('.card-container').find('input[type="text"]').val();
+        var qty = parseInt(qty1);
         flyToCart(imgToAnimate, cart);
-        cartQty();
-
+        cartQty(qty);
     });
-
 });
 
 //jump to url function
@@ -35,12 +30,18 @@ function scrollTop() {
 }
 
 // cart items count
-function cartQty() {
+function cartQty(qunatity) {
+    // var i = parseInt(i) + items;
+    var total_item = parseInt(sessionStorage.getItem('totalCartItems'));
+    var updateTotal = total_item + qunatity;
+    sessionStorage.setItem('totalCartItems', updateTotal);
+    // alert("after add" + i);
     //cart items count
-    if (items != 0) {
+    total_item = parseInt(sessionStorage.getItem('totalCartItems'));
+    if (total_item != 0) {
         // $(".header-cart").show();
         // TODO: Error Avilable Fix It
-        $("#headerCart.header-cart").html("<i class='fa fa-shopping-cart'></i> Cart <span class=\"itemCount\">" + items + "</span>");
+        $("#headerCart.header-cart").html("<i class='fa fa-shopping-cart'></i> Cart <span class=\"itemCount\">" + total_item + "</span>");
     } else {
         $("#headerCart.header-cart").html("<i class='fa fa-shopping-cart'></i> Cart <span class=\"itemCount\">0</span>");
     }
