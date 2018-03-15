@@ -33,7 +33,6 @@ $(document).ready(function() {
     // View More Details of Product
     $('.moreDetails').click(function() {
         var p_id = $(this).parent('.card-btn').parent('.card').attr('id'); //product id
-        alert(p_id);
         jumpUrl(p_id, "pid", "productView.php");
     });
 
