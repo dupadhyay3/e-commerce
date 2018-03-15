@@ -58,7 +58,6 @@ $(document).ready(function() {
             event.preventDefault(); //use to prevent submiting form
             $('#errEml').fadeIn(1000);
             $('#errEml').text(msg[0]);
-            // $('#txtLoginEml').focus();
             $('#txtLoginEml').addClass('box-input-field-error');
         }
 
@@ -77,7 +76,6 @@ $(document).ready(function() {
         } else {
             $('#errPwd').fadeIn(1000);
             $('#errPwd').text(msg[0]);
-            //$('#txtLoginPwd').focus();
             $('#txtLoginPwd').addClass('box-input-field-error');
             event.preventDefault(); //use to prevent submiting form
         }
@@ -94,7 +92,6 @@ $(document).ready(function() {
                 main1: main,
             }, function(data) {
                 alert(data); //Get Data From the addMainPRoCat.php which data is echo in that page
-                //$('#alertMain').after(data);
                 $('#mainCatForm')[0].reset();
             });
 
@@ -103,7 +100,6 @@ $(document).ready(function() {
         } else {
             $('#errMain').fadeIn(1000);
             $('#errMain').text(msg[0]);
-            //$('#txtLoginPwd').focus();
             $('#txtProCatMain').addClass('box-input-field-error');
             event.preventDefault(); //use to prevent submiting form
         }
@@ -112,8 +108,6 @@ $(document).ready(function() {
     // Add Sub Product Category
     $('#subCatForm').submit(function() {
         if (!isBlank($('#txtProCatSub').val()) && !isBlank($('#txtProCatMain1').val())) {
-            // console.log(main.val());
-            // console.log(sub.val());
 
             //for Ajax Add Data into Database
             var main = $('#txtProCatMain1').val();
@@ -265,28 +259,6 @@ $(document).ready(function() {
         }
     });
 
-    // delete from productDetails.php Page
-    // $('a.del').click(function() {
-    //     event.preventDefault();
-    //     var parent = $(this).parent().parent();
-    //     if (confirm("Are You sure to delete !")) {
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: "../includes/adminDelProduct.php",
-    //             data: id,
-    //             beforeSend: function() {
-    //                 parent.animate({ 'backgroundColor': '#fb6c6c' }, 300);
-    //             },
-    //             success: function(data) {
-    //                 alert(data);
-    //                 parent.slideUp(300, function() {
-    //                     parent.remove();
-    //                 });
-    //             }
-    //         });
-    //     }
-    // });
-    // Add Product Details
     $('#proDetailEditForm').submit(function() {
         if (isBlank($('#editId').val())) {
             window.location.href = "../admin/productDetails.php";

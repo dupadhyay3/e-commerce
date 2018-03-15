@@ -30,12 +30,23 @@ $(document).ready(function() {
         cartQty(qty);
     });
 
+    // View More Details of Product
+    $('.moreDetails').click(function() {
+        var p_id = $(this).parent('.card-btn').parent('.card').attr('id'); //product id
+        alert(p_id);
+        jumpUrl(p_id, "pid", "productView.php");
+    });
+
+    // Show Cart Page
+    $('#headerCart').click(function() {
+        window.location.href = "showCart.php";
+    });
+
 });
 
 //jump to url function
 function jumpUrl(id, attri, php) {
     window.location.href = "../" + php + "?" + attri + "=" + id;
-    console.log("hellow");
 }
 
 // scroll to top animation

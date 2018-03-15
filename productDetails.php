@@ -16,7 +16,7 @@ if($main != null){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <title>Home | e-Commerce Portal</title>
+    <title>Products | e-Commerce Portal</title>
     <link rel="stylesheet" href="css/clientStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery-3.3.1.js"></script>
@@ -39,7 +39,7 @@ if($main != null){
                         if($result->num_rows > 0){
                             while($row1 = $result->fetch_array()){
                                 echo '
-                                <div class="card">
+                                <div class="card" id='.$row1[0].'>
                                     <img src="data:image/*;base64,'.base64_encode( $row1[1] ).'" onerror="."this.src="../img/NoImg.png";"/>
                                     <hr>
                                     <div class="card-container">
@@ -86,7 +86,7 @@ if($main != null){
                         if($result->num_rows > 0){
                             while($row1 = $result->fetch_array()){
                                 echo '
-                                <div class="card">
+                                <div class="card" id='.$row1[0].'>
                                     <img src="data:image/*;base64,'.base64_encode( $row1[1] ).'" onerror="."this.src="../img/NoImg.png";"/>
                                     <hr>
                                     <div class="card-container">
