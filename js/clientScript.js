@@ -1,8 +1,24 @@
 if (sessionStorage) {
     sessionStorage.setItem("totalCartItems", 0);
 }
+
+
 // Page Loading Event 
 $(document).ready(function() {
+    // Scroll to top arrow
+    $(window).scroll(function() {
+        if ($(this).scrollTop() >= 150) { // If page is scrolled more than 150px
+            $('#return-to-top').fadeIn(200); // Fade in the arrow
+        } else {
+            $('#return-to-top').fadeOut(200); // Else fade out the arrow
+        }
+    });
+
+    // When arrow is clicked
+    $('#return-to-top').click(function() {
+        scrollTop();
+    });
+
     // Add To Fly Animation First Try
     $('.addToCart').click(function() {
         scrollTop();
@@ -13,6 +29,7 @@ $(document).ready(function() {
         flyToCart(imgToAnimate, cart);
         cartQty(qty);
     });
+
 });
 
 //jump to url function
@@ -21,7 +38,7 @@ function jumpUrl(id, attri, php) {
     console.log("hellow");
 }
 
-// scroll to op animation
+// scroll to top animation
 function scrollTop() {
     //Scroll to top if cart icon is hidden on top
     $('html, body').animate({

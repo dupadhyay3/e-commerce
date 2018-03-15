@@ -25,7 +25,7 @@ require("includes/connection.php");
             while($row = $resultMain->fetch_array()){
                 echo '<div class="list-header">'.$row[1].'</div>';
                 echo  '<div class="container-vertical-list">';
-                $sql="SELECT p.p_id, p.p_image, p.p_name, p.p_price FROM product_details p JOIN p_category_main m ON m.pcm_id = p.pcm_id WHERE p.pcm_id = $row[0]";
+                $sql="SELECT p.p_id, p.p_image, p.p_name, p.p_price FROM product_details p JOIN p_category_main m ON m.pcm_id = p.pcm_id WHERE p.pcm_id = $row[0] GROUP BY (p.p_id)";
                 $result=$conn->query($sql);
                 if($result->num_rows > 0){
                     while($row1 = $result->fetch_array()){
