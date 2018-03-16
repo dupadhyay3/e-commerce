@@ -1,7 +1,23 @@
+//check sessionStorage is not Empty & initilize (define) sessionStorage
 if (sessionStorage) {
     sessionStorage.setItem("totalCartItems", 0);
 }
 
+//check value is number or not
+function isNumber(n) {
+    if (!isNaN(n)) { return true; } else { return false; }
+}
+
+//blank validation
+function isBlank(val) {
+    if (val == "" && val.length == 0) return true;
+    else return false;
+}
+
+//check value is null or not
+function isNull(val) {
+    if (val == "null") return true;
+}
 
 // Page Loading Event 
 $(document).ready(function() {
@@ -26,8 +42,26 @@ $(document).ready(function() {
         var imgToAnimate = $(this).parent('.card-btn').parent('.card').find('img').eq(0); // product image select for fly animation 
         var qty1 = $(this).parent('.card-btn').parent('.card').find('.card-container').find('input[type="text"]').val();
         var qty = parseInt(qty1);
+        var pid = $(this).parent('.card-btn').parent('.card').attr('id'); //product id
+
         flyToCart(imgToAnimate, cart);
         cartQty(qty);
+
+        if (!isBlank(qty) && isNumber(qty) && !isBlank(pid) && isNumber(pid)) {
+            alert(pid);
+            alert(qty);
+            //for Ajax Add Data into Database
+            $.post("../includes/clientAddToCart.php", {
+                p_id: pid,
+                p_qty: qty,
+            }, function(data) {
+                alert(data);
+                $('#subCatForm')[0].reset();
+            });
+        } else {
+            alert("Somthing went wrong!");
+        }
+
     });
 
     // View More Details of Product
@@ -41,6 +75,10 @@ $(document).ready(function() {
         window.location.href = "showCart.php";
     });
 
+    // Show Profile Page
+    $('#headerUser').click(function() {
+        window.location.href = "showProfile.php";
+    });
 });
 
 //jump to url function

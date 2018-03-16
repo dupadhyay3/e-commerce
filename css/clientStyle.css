@@ -363,9 +363,19 @@ ul.sub-menu {
 }
 
 .cart-body {
+    min-height: 420px;
+    max-height: initial;
     width: 95%;
     border-radius: 2px;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+}
+
+.cart-body,
+.cart-header {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cart-body {
+    margin-top: 25px;
 }
 
 .cart-body,
@@ -387,5 +397,5 @@ ul.sub-menu {
 }
 
 .cart-header {
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
 }
