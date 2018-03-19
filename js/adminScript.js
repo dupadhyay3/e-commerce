@@ -239,9 +239,8 @@ $(document).ready(function() {
 
 
     // Ajax For Main And Sub Category Relation in Add Product Details
-    $('#txtProCatMain2').on('change', function() {
+    $('#txtProCatMain2').blur(function() {
         var mainId = $('#txtProCatMain2').val();
-        alert(mainId);
         if (mainId) {
             $.ajax({
                 type: 'post',

@@ -43,15 +43,17 @@ $(document).ready(function() {
         var qty1 = $(this).parent('.card-btn').parent('.card').find('.card-container').find('input[type="text"]').val();
         var qty = parseInt(qty1);
         var pid = $(this).parent('.card-btn').parent('.card').attr('id'); //product id
-
+        var cid = $('#cust_id');
         flyToCart(imgToAnimate, cart);
         cartQty(qty);
 
         if (!isBlank(qty) && isNumber(qty) && !isBlank(pid) && isNumber(pid)) {
+            alert(cid);
             alert(pid);
             alert(qty);
             //for Ajax Add Data into Database
             $.post("../includes/clientAddToCart.php", {
+                cust_id: cid,
                 p_id: pid,
                 p_qty: qty,
             }, function(data) {
