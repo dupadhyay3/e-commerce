@@ -1,6 +1,6 @@
 <?php
-require_once("../includes/connection.php");
-require_once("../includes/session.php");
+require_once("includes/connection.php");
+// require_once("includes/session.php");
     $err = $ele = new SplFixedArray(2); #give size to array
     // remove extra html special char and symbols
     function secure($data){
@@ -30,7 +30,7 @@ require_once("../includes/session.php");
         $err[1]=val($ele[1],$err[1],$regex[1]);
 
         if(!empty($ele[0]) && !empty($ele[1])){
-            $sql="SELECT email FROM admin WHERE email = '$ele[0]' AND password='$ele[1]'";
+            $sql="SELECT email FROM customer_login WHERE email = '$ele[0]' AND password='$ele[1]'";
             $result=$conn->query($sql);
             if($result->num_rows > 0){
                 $popup = '  <div id="alertMsg" class="alert alert-success">
@@ -42,9 +42,9 @@ require_once("../includes/session.php");
                     //$row[0];
                 }
                 $login_time=date('d M, Y  g:i:s ');
-                $update = "UPDATE admin SET last_login = '$login_time'";
+                $update = "UPDATE customer_login SET last_login = '$login_time'";
                 $result = $conn->query($update) or Die("Updating Error");
-                header("Refresh: 0.8; url=../admin/home.php");
+                // header("Refresh: 0.8; url=index.php");
             }else{
                 $popup = '  <div id="alertMsg" class="alert alert-danger">
                                 <span id="alertClose" class="closebtn" onclick="this.parentElement.style.display=&#39;none&#39;;">&times;</span> 
@@ -67,11 +67,11 @@ require_once("../includes/session.php");
     <meta http-equiv="cache-control" content="private, max-age=0, no-cache">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Admin Login | E-Commerce</title>
-    <link rel="stylesheet" href="../css/adminStyle.css">
-    <script src="../js/jquery-3.3.1.js"></script>
-    <script src="../js/adminScript.js"></script>
+    <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Customer Login | e-Commerce Portal</title>
+    <link rel="stylesheet" href="css/adminStyle.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/adminScript.js"></script>
 </head>
 <body>
     <?php echo $popup; ?>
@@ -97,7 +97,7 @@ require_once("../includes/session.php");
         </form>
         <div class="footer-box">
             <p class="footer-box-text">
-                <a id="linkPortal" href="../index.php">Open E-Commerce Portal</a>
+                <a id="linkPortal" href="index.php">E-Commerce Portal</a>
             </p>
         </div>
     </div>

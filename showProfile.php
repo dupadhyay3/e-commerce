@@ -52,28 +52,49 @@ require("includes/connection.php");
                 <div id="personal-information">
                     <div class="profile-right-personal-info">
                         <div class="pro-header">Presonal Information
-                            <span class="edit">Edit</span>
-                            <span class="cancel">Cancel</span>
+                            <span id="personalEdit" class="edit">Edit</span>
+                            <span id="personalCancel" class="cancel">Cancel</span>
                         </div>
                         <form id="personalInfo" name="personal-info">
                                 <div class="input-group">
                                     <input class="input-field" type="text" id="txtFirstName" name="txtFirstNm" value="Deepak" disabled>
-                                    <span id="errEml" class="err"></span>
+                                    <span id="errFnm" class="err"></span>
                                     <label>First Name</label>
                                 </div>
                                 <div class="input-group">
                                     <input class="input-field" type="text" id="txtLastName" name="txtLastNm" value="Upadhyay" disabled>
-                                    <span id="errEml" class="err"></span>
+                                    <span id="errLnm" class="err"></span>
                                     <label>Last Name</label>
                                 </div>
                                 <div class="input-group">
                                     <button class="profile-right-save-btn" id="personalInfoBtn" name="PersonalInfoBtn">Save</button>
                                 </div>
-                            <div class="personal-info-lable">
-                                Your Gender
-                            </div>
-                            <div class="input-field">
-                                <lable for="proMale">
+                                <div class="clear"></div>
+                                <div class="personal-info-lable">
+                                    Your Gender
+                                </div>
+                                <div class="input-radio-container">
+                                    <label for="Male" class="input-radio-lable">
+                                        <input type="radio" class="input-radio-btn" name="gender" id="Male" value="M">
+                                        <div class="input-radio-effect"></div>
+                                        <div class="input-radio-text">
+                                            <span>Male</span>
+                                        </div>
+                                    </label>
+                                    <label for="Female" class="input-radio-lable">
+                                        <input type="radio" class="input-radio-btn" name="gender" id="Female" value="F">
+                                        <div class="input-radio-effect"></div>
+                                        <div class="input-radio-text">
+                                            <span>Female</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="personal-info-lable">
+                                    Your Gender
+                                </div>
+                                <div class="input-field">
+                                <lable class="input-field-radio-lable" for="proMale">
                                     <div class="input-field-radio">
                                         <input type="radio" name="gender" id="proMale" value="M">
                                     </div>
@@ -94,55 +115,71 @@ require("includes/connection.php");
                     </div>
                     <div class="profile-right-personal-info">
                         <div class="pro-header">Email Address
-                            <span class="edit">Edit</span>
-                            <span class="cancel">Cancel</span>
+                            <span id="emailEdit" class="edit">Edit</span>
+                            <span id="emailCancel" class="cancel">Cancel</span>
                             <span id="changePassword" class="change">Change Password</span>
                         </div>
                         <form id="emailAddress" name="email-address">
-                            <div class="input-field">
-                                <lable for="emailAdd">Email Address</lable>
-                                <input type="text" id="emailAdd" name="EmailAdd">
+                            <div class="input-group">
+                                <input class="input-field" type="text" id="txtEmail" name="txtEmailAdd" value="upadhyaydeepak698@gmail.com" disabled>
+                                <span id="errEml" class="err"></span>
+                                <label>Email Address</label>
                             </div>
-                            <button class="profile-right-save-btn" id="changeEmailBtn" name="ChangeEmailBtn">Save</button>
+                            <div class="input-group">
+                                <button class="profile-right-save-btn" id="changeEmailBtn" name="ChangeEmailBtn">Save</button>
+                            </div>
                         </form>
                     </div>
+                    <div class="clear"></div>
                     <div class="profile-right-personal-info">
                         <div div class="pro-header">Change Password
-                            <span class="cancel">Cancel</span>
+                            <span id="changeCancel" class="cancel">Cancel</span>
                         </div>
                         <form id="changePassword" name="change-password">
-                            <div class="input-field">
-                                <lable for="curPassword">Current Password</lable>
-                                <input type="password" id="curPassword" name="CurPassword">
+                            <div class="input-group">
+                                <input class="input-field" type="password" id="txtCurPass" name="txtCurPwd">
+                                <span id="errCurPwd" class="err"></span>
+                                <label>Current Password</label>
                             </div>
-                            <div class="input-field">
-                                <lable for="newPassword">New Password</lable>
-                                <input type="password" id="newPassword" name="NewPassword">
+                            <div class="clear"></div>
+                            <div class="input-group">
+                                <input class="input-field" type="password" id="txtNewPass" name="txtNewPwd">
+                                <span id="errNewPwd" class="err"></span>
+                                <label>New Password</label>
                             </div>
-                            <div class="input-field">
-                                <lable for="confPassword">Confirm New Password</lable>
-                                <input type="password" id="confPassword" name="ConfPassword">
+                            <div class="input-group">
+                                <input class="input-field" type="password" id="txtConfPass" name="txtConfPwd">
+                                <span id="errConfPwd" class="err"></span>
+                                <label>Confirm New Password</label>
                             </div>
-                            <button class="profile-right-save-btn" id="changePassBtn" name="ChangePassBtn">Change    Password</button>
+                            <div class="input-group">
+                                <button class="profile-right-save-btn" id="changePassBtn" name="ChangePassBtn">Update</button>
+                            </div>
                         </form>
                     </div>
+                    <div class="clear"></div>
                     <div class="profile-right-personal-info">
                         <div class="pro-header">Mobile Number
-                            <span class="edit">Edit</span>
-                            <span class="cancel">Cancel</span>
+                            <span id="mobileEdit" class="edit">Edit</span>
+                            <span id="mobileCancel" class="cancel">Cancel</span>
                         </div>
                         <form id="mobileNumber" name="mobile-number">
-                            <div class="input-field">
-                                <lable for="mobileNo">Mobile Number</lable>
-                                <input type="text" id="mobileNo" name="MobileNo">
+                            <div class="input-group">
+                                <input class="input-field" type="text" id="txtMobNo" name="txtMobile" value="8000766085" disabled>
+                                <span id="errMobNo" class="err"></span>
+                                <label>Mobile Number</label>
                             </div>
-                            <button class="profile-right-save-btn" id="changeMobileBtn" name="ChangeMobileBtn">Save</button>
+                            <div class="input-group">
+                                <button class="profile-right-save-btn" id="changeMobileBtn" name="ChangeMobileBtn">Save</button>
+                            </div>
                         </form>
                     </div>
                 </div>
+                <div class="clear"></div>
                 <div id="manage-address">
                     <div class="profile-right-manage-address">
                         <div class="pro-header">Manage Addresses</div>
+                        <div class="clear"></div>
                         <div class="add-address">
                             <i class="fa fa-address-card"></i> ADD A NEW ADDRESS
                         </div>
