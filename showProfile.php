@@ -35,8 +35,8 @@ require("includes/connection.php");
                         </div>
                         <div class="profile-user-menu-main">
                             <i class="menu-icon fa fa-id-card"></i><a href="#" id="accountSettings">ACCOUNT SETTINGS</a>
-                            <div class="profile-user-menu-sub menu-active">
-                                <a href="#" id="myInformation">Profile Information</a>
+                            <div class="profile-user-menu-sub">
+                                <a class="menu-active" href="#" id="myInformation">Profile Information</a>
                             </div>
                             <div class="profile-user-menu-sub">
                                 <a href="#" id="myAddresses">Manage Address</a>
@@ -90,26 +90,6 @@ require("includes/connection.php");
                                     </label>
                                 </div>
                                 <div class="clear"></div>
-                                <div class="personal-info-lable">
-                                    Your Gender
-                                </div>
-                                <div class="input-field">
-                                <lable class="input-field-radio-lable" for="proMale">
-                                    <div class="input-field-radio">
-                                        <input type="radio" name="gender" id="proMale" value="M">
-                                    </div>
-                                    <div class="input-field-radio-txt">
-                                        <h5>Male</h5>
-                                    </div>
-                                </lable>
-                                <lable for="proFemale">
-                                    <div class="input-field-radio">
-                                        <input type="radio" name="gender" id="proFemale" value="F">
-                                    </div>
-                                    <div class="input-field-radio-txt">
-                                        <h5>Female</h5>
-                                    </div>
-                                </lable>
                             </div>
                         </form>
                     </div>
