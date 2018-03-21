@@ -122,6 +122,7 @@ a.main-logo:any-link,
 
 footer a {
     color: rgb(46, 23, 252);
+    /* color: #2874f0; */
 }
 
 header,
@@ -159,7 +160,9 @@ footer {
 }
 
 .header-cart,
-.header-user {
+.header-user,
+i.menu-icon-add,
+ul.address-menu {
     float: right;
 }
 
@@ -375,7 +378,9 @@ ul.sub-menu {
 .profile-user-menu-main a,
 .profile-user-menu-sub a,
 .input-radio-effect,
-.input-radio-lable {
+.input-radio-lable,
+.add-address,
+.deactive-account {
     cursor: pointer;
 }
 
@@ -403,7 +408,10 @@ ul.sub-menu {
 #return-to-top i,
 .pofile-body,
 .input-group,
-.input-radio-effect {
+.input-radio-effect,
+textarea.input-field,
+i.menu-icon-add,
+ul.address-menu {
     position: relative;
 }
 
@@ -519,8 +527,10 @@ i.menu-icon,
 .profile-user-menu-sub .menu-active,
 .edit,
 .cancel,
-.change {
-    color: #2874f0 !important;
+.change,
+.add-address,
+.deactive-account {
+    color: #009688 !important;
 }
 
 .profile-body,
@@ -582,7 +592,10 @@ ul.sub-menu,
 .cancel,
 .change,
 .personal-info-lable,
-.input-radio-container {
+.input-radio-container,
+.deactive-account,
+.address-menu-item,
+.address-list-item {
     text-align: left;
 }
 
@@ -608,7 +621,6 @@ ul.sub-menu,
 }
 
 .profile-user-menu,
-.address-menu,
 .profile-user {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .08);
 }
@@ -654,7 +666,8 @@ i.menu-icon {
     padding: 24px 32px 0;
 }
 
-.profile-right-personal-info {
+.profile-right-personal-info,
+.profile-right-manage-address {
     padding-bottom: 56px;
 }
 
@@ -664,7 +677,9 @@ i.menu-icon {
 .change,
 .profile-user-right>.txt-hello+.txt-name,
 .profile-user-menu-main,
-.profile-user-menu-main a {
+.profile-user-menu-main a,
+.add-address,
+.deactive-account {
     font-weight: 500;
 }
 
@@ -712,7 +727,9 @@ input.input-field:enabled+label {
 
 /* if input is disabled */
 
-input.input-field:disabled {
+input.input-field:disabled,
+.input-radio-btn:disabled,
+.input-radio-btn:disabled .input-radio-text>span {
     cursor: not-allowed;
 }
 
@@ -743,7 +760,8 @@ input.input-field:disabled {
 .profile-user-menu-sub a,
 .edit,
 .cancel,
-.change {
+.change,
+.add-address {
     font-size: 14px;
 }
 
@@ -887,7 +905,7 @@ input[type="radio"] {
 
 .input-radio-btn:checked~.input-radio-effect::before {
     border: 2px hidden;
-    background-color: #2874f0;
+    background-color: #009688;
 }
 
 .input-radio-lable .input-radio-text {
@@ -902,10 +920,92 @@ input[type="radio"] {
 }
 
 .input-radio-btn:checked~.input-radio-effect {
-    border-color: #2874f0;
+    border-color: #009688;
 }
 
 .input-radio-lable .input-radio-effect {
     margin-top: 2px;
     margin-left: 0;
+}
+
+.add-address {
+    padding: 16px 0;
+}
+
+.deactive-account {
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.profile-info-footer-img {
+    vertical-align: middle;
+}
+
+.input-radio-container.disabled-radio,
+.input-radio-container.disabled-radio .input-radio-text {
+    color: #878787;
+    cursor: not-allowed;
+}
+
+.input-radio-container.disabled-radio .input-radio-effect,
+.input-radio-container.disabled-radio .input-radio-effect::before,
+.input-radio-container.disabled-radio .input-radio-btn {
+    border-color: #c2c2c2 !important;
+    cursor: not-allowed;
+}
+
+
+/* .input-radio-container.disabled-radio .input-radio-btn:disabled:checked .input-radio-effect::before {
+    background-color: #c2c2c2 !important;
+}
+
+.input-radio-container.disabled-radio .input-radio-btn:disabled .input-radio-effect::before {} */
+
+.input-radio-btn:checked:disabled~.input-radio-effect::before {
+    border: 2px hidden;
+    background-color: #c2c2c2 !important;
+    /* background-color: #009688; */
+}
+
+.input-radio-text>span {
+    pointer-events: none;
+}
+
+textarea.input-field {
+    z-index: auto;
+    /* line-height: normal; */
+    font-size: 18px;
+    transition: none;
+    background: transparent !important;
+    margin: 0px;
+    width: 656px;
+    height: 45px;
+    overflow: auto;
+    resize: none;
+}
+
+.address-list-item {
+    max-width: 848px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+i.menu-icon-add {
+    /* float: right; */
+    right: 5px;
+    /* position: relative; */
+}
+
+ul.address-menu {
+    /* float: right; */
+    /* position: relative; */
+    display: none;
+}
+
+i.menu-icon-add:hover+ul.address-menu {
+    display: block;
+}
+
+i.menu-icon-add:not(:hover)+ul.add-address-menu {
+    display: none;
 }

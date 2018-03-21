@@ -18,7 +18,6 @@ require("includes/connection.php");
     <?php require_once('includes/clientHeaderCart.php'); ?>
     <?php require_once('includes/clientHeaderMenu.php'); ?>
     <div class="container">
-    
         <div class="profile-body" style="margin-top: 16px;">
             <div class="profile-left">
                 <div class="profile-user">
@@ -56,41 +55,40 @@ require("includes/connection.php");
                             <span id="personalCancel" class="cancel">Cancel</span>
                         </div>
                         <form id="personalInfo" name="personal-info">
-                                <div class="input-group">
+                            <div class="input-group">
                                     <input class="input-field" type="text" id="txtFirstName" name="txtFirstNm" value="Deepak" disabled>
                                     <span id="errFnm" class="err"></span>
                                     <label>First Name</label>
-                                </div>
-                                <div class="input-group">
+                            </div>
+                            <div class="input-group">
                                     <input class="input-field" type="text" id="txtLastName" name="txtLastNm" value="Upadhyay" disabled>
                                     <span id="errLnm" class="err"></span>
                                     <label>Last Name</label>
-                                </div>
-                                <div class="input-group">
+                            </div>
+                            <div class="input-group">
                                     <button class="profile-right-save-btn" id="personalInfoBtn" name="PersonalInfoBtn">Save</button>
-                                </div>
-                                <div class="clear"></div>
-                                <div class="personal-info-lable">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="personal-info-lable">
                                     Your Gender
-                                </div>
-                                <div class="input-radio-container">
+                            </div>
+                            <div class="input-radio-container disabled-radio">
                                     <label for="Male" class="input-radio-lable">
-                                        <input type="radio" class="input-radio-btn" name="gender" id="Male" value="M">
+                                        <input type="radio" class="input-radio-btn" name="gender" id="Male" value="M" checked="checked" disabled>
                                         <div class="input-radio-effect"></div>
                                         <div class="input-radio-text">
                                             <span>Male</span>
                                         </div>
                                     </label>
                                     <label for="Female" class="input-radio-lable">
-                                        <input type="radio" class="input-radio-btn" name="gender" id="Female" value="F">
+                                        <input type="radio" class="input-radio-btn" name="gender" id="Female" value="F" disabled>
                                         <div class="input-radio-effect"></div>
                                         <div class="input-radio-text">
                                             <span>Female</span>
                                         </div>
                                     </label>
-                                </div>
-                                <div class="clear"></div>
                             </div>
+                            <div class="clear"></div>
                         </form>
                     </div>
                     <div class="profile-right-personal-info">
@@ -154,65 +152,85 @@ require("includes/connection.php");
                             </div>
                         </form>
                     </div>
+                    <div class="clear"></div>
+                    <div class="deactive-account">Deactivate Account</div>
+                    <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
+            </div>
+            <div class="profile-right">
                 <div id="manage-address">
                     <div class="profile-right-manage-address">
                         <div class="pro-header">Manage Addresses</div>
                         <div class="clear"></div>
+                        <div class="clear"></div>
                         <div class="add-address">
-                            <i class="fa fa-address-card"></i> ADD A NEW ADDRESS
+                            <i class="fa fa-address-card"></i>&nbsp; ADD A NEW ADDRESS
                         </div>
-                        <div class="address-form">
-                            <div class="input-field">
-                                <lable for="address">Address</lable>
-                                <textarea id="address" name="Address"></textarea>
+                        <form name="address-form" id="addressFrom" method="post">
+                            <div class="input-group">
+                                <textarea class="input-field" id="txtAddress" name="txtAddress"></textarea>
+                                <!-- <input class="input-field" type="text" id="txtCity" name="txtCity"> -->
+                                <span id="errAddress" class="err"></span>
+                                <label>Address</label>
                             </div>
-                            <div class="input-field">
-                                <lable for="city">City</lable>
-                                <input type="text" id="city" name="City">
+                            <div class="clear"></div>
+                            <div class="input-group">
+                                <input class="input-field" type="text" id="txtCity" name="txtCity">
+                                <span id="errCity" class="err"></span>
+                                <label>City</label>
                             </div>
-                            <div class="input-field">
-                                <lable for="zip">Zip</lable>
-                                <input type="text" id="zip" name="Zip">
+                            <div class="input-group">
+                                <input class="input-field" type="text" id="txtZip" name="txtZip">
+                                <span id="errZip" class="err"></span>
+                                <label>Zip</label>
                             </div>
-                            <div class="input-field">
-                                <lable for="state"></lable>State</lable>
-                                <input type="text" id="state" name="State">
+                            <div class="clear"></div>
+                            <div class="input-group">
+                                <input class="input-field" type="text" id="txtState" name="txtState">
+                                <span id="errState" class="err"></span>
+                                <label>State</label>
                             </div>
-                            <div class="input-field">
-                                <lable for="country"></lable>Country</lable>
-                                <input type="text" id="country" name="Country">
+                            <div class="input-group">
+                                <input class="input-field" type="text" id="txtCountry" name="txtCountry">
+                                <span id="errCountry" class="err"></span>
+                                <label>Country</label>
                             </div>
+                            <div class="clear"></div>
                             <div class="personal-info-lable">
                                 Address Type
                             </div>
-                            <div class="input-field">
-                                <lable for="addBilling">
-                                    <div class="input-field-radio">
-                                        <input type="radio" name="type" id="addBilling" value="Biling">
-                                    </div>
-                                    <div class="input-field-radio-txt">
-                                        <h5>Billing</h5>
-                                    </div>
-                                </lable>
-                                <lable for="addShipping">
-                                    <div class="input-field-radio">
-                                        <input type="radio" name="type" id="addShipping" value="Shipping">
-                                    </div>
-                                    <div class="input-field-radio-txt">
-                                        <h5>Shipping</h5>
-                                    </div>
-                                </lable>
+                            <div class="input-radio-container">
+                                    <label for="Billing" class="input-radio-lable">
+                                        <input type="radio" class="input-radio-btn" name="addType" id="Billing" value="Bill">
+                                        <div class="input-radio-effect"></div>
+                                        <div class="input-radio-text">
+                                            <span>Billing Address</span>
+                                        </div>
+                                    </label>
+                                    <label for="Shipping" class="input-radio-lable">
+                                        <input type="radio" class="input-radio-btn" name="addType" id="Shipping" value="Ship">
+                                        <div class="input-radio-effect"></div>
+                                        <div class="input-radio-text">
+                                            <span>Shipping Address</span>
+                                        </div>
+                                    </label>
                             </div>
-                            <button class="profile-right-save-btn" id="addAddressBtn" name="AddAddressBtn">Save</button>
-                            <button class="profile-right-cancel-btn" id="changeMobileBtn" name="Cancel">Cancel</button>
-                        </div>
+                            <div class="input-group">
+                                <button class="profile-right-save-btn" id="addAddressBtn" name="AddAddressBtn">Save</button>
+                            </div>
+                            <div class="input-group">
+                                <button class="profile-right-cancel-btn" id="cancelAddAddressBtn" name="CancelAddAddressBtn">Cancel</button>
+                            </div>
+                        </form>
+                        <div class="clear"></div>
                         <div class="address-list">
                             <div class="address-list-item">
                                 <div class="address-header">
+                                    <span class="address-type">Default Address</span>
+                                    <span>Shipping Address</span>
                                     <span>Billing Address</span>
-                                    <i class="fa fa-ellipsis-v"></i>
+                                    <i class="menu-icon-add fa fa-ellipsis-v"></i>
                                     <ul class="address-menu">
                                         <li class="address-menu-item">Edit</li>
                                         <li class="address-menu-item">Delete</li>
